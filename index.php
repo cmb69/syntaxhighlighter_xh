@@ -162,7 +162,6 @@ function Syntaxhighlighter($content)
     $defs = implode("\n    ", $defs);
 
     $hjs .= <<<SCRIPT
-<script src="{$dir}syntaxhighlighter.js" type="text/javascript"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 with (SyntaxHighlighter) {
