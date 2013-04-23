@@ -1,28 +1,38 @@
 <?php
 
 /**
- * Front-End of Syntaxhighlighter_XH.
+ * Front-end of Syntaxhighlighter_XH.
  *
- * Copyright (c) 2012 Christoph M. Becker (see license.txt)
+ * @package	Syntaxhighlighter
+ * @copyright	Copyright (c) 2012-2013 Christoph M. Becker <http://3-magi.net/>
+ * @license	http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
+ * @version     $Id$
+ * @link	http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
  */
 
 
+/*
+ * Prevent direct access.
+ */
 if (!defined('CMSIMPLE_XH_VERSION')) {
     header('HTTP/1.0 403 Forbidden');
     exit;
 }
 
 
-define('SYNTAXHIGHLIGHTER_VERSION', '1beta1');
+/**
+ * The plugin version.
+ */
+define('SYNTAXHIGHLIGHTER_VERSION', '1alpha1');
 
 
 /**
- * Returns the brushes necessary to highlight the given $cnt.
+ * Returns the brushes necessary to highlight the given $content.
  *
- * @param string $cnt
+ * @param  string $cnt
  * @return array
  */
-function Syntaxhighlighter_brushes($cnt)
+function Syntaxhighlighter_brushes($content)
 {
     $aliases = array(
 	'applescript' => 'shBrushAppleScript',
@@ -75,7 +85,7 @@ function Syntaxhighlighter_brushes($cnt)
 	'html' => 'shBrushXml'
     );
 
-    preg_match_all('/<pre.*?class=["\'](.*?)["\'].*?>/isu', $cnt, $matches);
+    preg_match_all('/<pre.*?class=["\'](.*?)["\'].*?>/isu', $content, $matches);
     $brushes = array();
     foreach ($matches[1] as $class) {
 	$opts = explode(';', $class);
@@ -93,17 +103,20 @@ function Syntaxhighlighter_brushes($cnt)
 
 
 /**
- * Writes the necessary JS and CSS to <head>.
+ * Writes the necessary JS and CSS to the head element.
  *
- * @global string $hjs
- * @param string $cnt
+ * @global array  The paths of system files and folders.
+ * @global string  Elements to be inserted in the head element.
+ * @global array  The configuration of the plugins.
+ * @global array  The localization of the plugins.
+ * @param  string $content
  * @return void
  */
-function Syntaxhighlighter($cnt)
+function Syntaxhighlighter($content)
 {
     global $pth, $hjs, $plugin_cf, $plugin_tx;
 
-    $brushes = syntaxhighlighter_brushes($cnt);
+    $brushes = syntaxhighlighter_brushes($content);
     if (empty($brushes)) {
 	return;
     }
@@ -166,6 +179,9 @@ SCRIPT;
 }
 
 
+/*
+ * Include the necessary JS and CSS.
+ */
 if (!$edit) {
     Syntaxhighlighter($c[$pd_s]);
 }
