@@ -53,7 +53,7 @@ function Syntaxhighlighter_systemCheck()
 { // RELEASE-TODO
     global $pth, $tx, $plugin_tx;
 
-    define('SYNTAXHIGHLIGHTER_PHP_VERSION', '4.3.0');
+    define('SYNTAXHIGHLIGHTER_PHP_VERSION', '4.0.7');
     $ptx = $plugin_tx['syntaxhighlighter'];
     $imgdir = $pth['folder']['plugins'].'syntaxhighlighter/images/';
     $ok = tag('img src="'.$imgdir.'ok.png" alt="ok"');
@@ -63,7 +63,7 @@ function Syntaxhighlighter_systemCheck()
 	    .(version_compare(PHP_VERSION, SYNTAXHIGHLIGHTER_PHP_VERSION) >= 0 ? $ok : $fail)
 	    .'&nbsp;&nbsp;'.sprintf($ptx['syscheck_phpversion'], SYNTAXHIGHLIGHTER_PHP_VERSION)
 	    .tag('br')."\n";
-    foreach (array('date', 'pcre', 'session') as $ext) {
+    foreach (array('pcre') as $ext) {
 	$o .= (extension_loaded($ext) ? $ok : $fail)
 		.'&nbsp;&nbsp;'.sprintf($ptx['syscheck_extension'], $ext).tag('br')."\n";
     }
@@ -71,8 +71,6 @@ function Syntaxhighlighter_systemCheck()
 	    .'&nbsp;&nbsp;'.$ptx['syscheck_magic_quotes'].tag('br').tag('br')."\n";
     $o .= (strtoupper($tx['meta']['codepage']) == 'UTF-8' ? $ok : $fail)
 	    .'&nbsp;&nbsp;'.$ptx['syscheck_encoding'].tag('br')."\n";
-    $o .= (file_exists($pth['folder']['plugins'].'jquery/jquery.inc.php') ? $ok : $fail)
-	    .'&nbsp;&nbsp;'.$ptx['syscheck_jquery'].tag('br').tag('br')."\n";
     $folders = array();
     foreach (array('config/', 'css/', 'languages/') as $folder) {
 	$folders[] = $pth['folder']['plugins'].'syntaxhighlighter/'.$folder;
