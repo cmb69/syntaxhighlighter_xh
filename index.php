@@ -153,12 +153,12 @@ function Syntaxhighlighter($content)
     $strs = implode("\n        ", $strs);
 
     $defs = array();
-    foreach ($pcf as $opt => $val) {
-	list($cat, $key) = explode('_', $opt, 2);
-	if ($cat == 'shd') {
-	    $defs[] = "defaults['" . str_replace('_', '-', $key) . "'] = 3;";
-	}
-    }
+//    foreach ($pcf as $opt => $val) {
+//	list($cat, $key) = explode('_', $opt, 2);
+//	if ($cat == 'shd') {
+//	    $defs[] = "defaults['" . str_replace('_', '-', $key) . "'] = 3;";
+//	}
+//    }
     $defs = implode("\n    ", $defs);
 
     $hjs .= <<<SCRIPT
