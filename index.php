@@ -166,8 +166,8 @@ SCRIPT;
 }
 
 
-if ($s >= 0 && $s < $cl && !$edit) {
-    Syntaxhighlighter($c[$s]);
+if (!$edit) {
+    Syntaxhighlighter($c[$pd_s]);
 }
 
 ?>
