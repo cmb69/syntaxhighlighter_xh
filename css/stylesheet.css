@@ -2,7 +2,3 @@ div.syntaxhighlighter td.gutter, div.syntaxhighlighter td.code {border: none; bo
 .syntaxhighlighter { padding: 1px !important; }
 pre {background: white; padding: 0 0.5em}
 div.syntaxhighlighter {border: 1px solid #888;/* padding: 0.5em !important*/}
-
-/* back-end */
-img.syntaxhighlighter_plugin_icon {display: block; float: left; margin: 0 20px 10px 0}
-p.syntaxhighlighter_license {clear: both; text-align: justify}

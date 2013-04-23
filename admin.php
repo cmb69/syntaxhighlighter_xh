@@ -23,21 +23,21 @@ function Syntaxhighlighter_version()
     global $pth;
 
     return '<h1><a href="http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH">Syntaxhighlighter_XH</a></h1>'."\n"
-	. tag('img src="'.$pth['folder']['plugins'].'syntaxhighlighter/syntaxhighlighter.png" class="syntaxhighlighter_plugin_icon"')
+	. tag('img src="'.$pth['folder']['plugins'].'syntaxhighlighter/syntaxhighlighter.png" style="float: left; margin: 0 16px 16px 0"')
 	. '<p>Version: '.SYNTAXHIGHLIGHTER_VERSION.'</p>'."\n"
 	. '<p>Copyright &copy; 2012 <a href="http://3-magi.net">Christoph M. Becker</a></p>'."\n"
 	. '<p>Powered by <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a></p>'
-	. '<p class="syntaxhighlighter_license">'
+	. '<p style="text-align: justify">'
 	. 'This program is free software: you can redistribute it and/or modify'
 	. ' it under the terms of the GNU General Public License as published by'
 	. ' the Free Software Foundation, either version 3 of the License, or'
 	. ' (at your option) any later version.</p>'."\n"
-	. '<p class="syntaxhighlighter_license">'
+	. '<p style="text-align: justify">'
 	. 'This program is distributed in the hope that it will be useful,'
 	. ' but WITHOUT ANY WARRANTY; without even the implied warranty of'
 	. ' MERCHAN&shy;TABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the'
 	. ' GNU General Public License for more details.</p>'."\n"
-	. '<p class="syntaxhighlighter_license">'
+	. '<p style="text-align: justify">'
 	. 'You should have received a copy of the GNU General Public License'
 	. ' along with this program.  If not, see'
 	. ' <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>'."\n";
