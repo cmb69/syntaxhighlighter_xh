@@ -181,7 +181,7 @@ SCRIPT;
 /*
  * Include the necessary JS and CSS.
  */
-if (!$edit) {
+if (!$edit && $pd_s >= 0) {
     Syntaxhighlighter($c[$pd_s]);
 }
 
