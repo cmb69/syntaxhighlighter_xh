@@ -32,8 +32,8 @@ function Syntaxhighlighter_version()
     return '<h1><a href="http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH">Syntaxhighlighter_XH</a></h1>'."\n"
 	. tag('img src="'.$pth['folder']['plugins'].'syntaxhighlighter/syntaxhighlighter.png" style="float: left; margin: 0 16px 16px 0"')
 	. '<p>Version: '.SYNTAXHIGHLIGHTER_VERSION.'</p>'."\n"
-	. '<p>Copyright &copy; 2012 <a href="http://3-magi.net">Christoph M. Becker</a></p>'."\n"
-	. '<p>Powered by <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a></p>'
+	. '<p>Copyright &copy; 2012-2013 <a href="http://3-magi.net">Christoph M. Becker</a></p>'."\n"
+	. '<p>Powered by <a href="http://alexgorbatchev.com/SyntaxHighlighter/">Alex Gorbatchev\'s SyntaxHighlighter</a></p>'
 	. '<p style="text-align: justify">'
 	. 'This program is free software: you can redistribute it and/or modify'
 	. ' it under the terms of the GNU General Public License as published by'
