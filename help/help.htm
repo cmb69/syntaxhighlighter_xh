@@ -11,7 +11,8 @@
 <body>
 
 <h1>Syntaxhighlighter_XH - a CMSimple_XH Plugin</h1>
-<div style="float:left; margin: 0 16px 16px 0"><img src="../syntaxhighlighter.png" alt="Plugin Icon"></div>
+<div style="float:left; margin: 0 16px 16px 0"><img
+src="../syntaxhighlighter.png" alt="Plugin Icon"></div>
 <p>Syntaxhighligher_XH facilitates improved presentation of code snippets in the
 content for users having JavaScript enabled. The actual work is done by <a
 href="http://alexgorbatchev.com/SyntaxHighlighter/">Alex Gorbatchev's
@@ -25,7 +26,7 @@ available, which make editing even more convenient.</p>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#settings">Settings</a></li>
 <li><a href="#usage">Usage</a></li>
-<!--<li><a href="#limitations">Limitations</a></li>-->
+<li><a href="#limitations">Limitations</a></li>
 <li><a href="#license">License</a></li>
 <li><a href="#credits">Credits</a></li>
 </ul>
@@ -37,8 +38,8 @@ available, which make editing even more convenient.</p>
 
 <h2><a name="notice">Important Notice</a></h2>
 <p><strong>The current version is merely a draft. Everything might change, and
-there may be severe bugs and limitations. It is a so called alpha version. Use
-with utmost caution!</strong></p>
+there may be severe bugs and limitations as it is barely tested. It is a so
+called alpha version. Use with utmost caution!</strong></p>
 <div class="toplink"><a href="#">back to top</a></div>
 
 <h2><a name="requirements">Requirements</a></h2>
@@ -55,7 +56,8 @@ CMSimple_XH wiki</a> for further details.</p>
 <li>Unzip the distribution on your computer.</li>
 <li>Upload the whole directory syntaxhighlighter/ to your server into the
 CMSimple_XH plugins directory.</li>
-<li>Set write permissions for the subdirectories config/, css/ und languages/.</li>
+<li>Set write permissions for the subdirectories config/, css/ und
+languages/.</li>
 <li><strong>Switch to "Syntaxhighlighter" in the back-end to check if all
 requirements are fulfilled.</strong></li>
 </ol>
@@ -102,8 +104,12 @@ or update a code snippet" button, where you can edit the code and the
 settings.</p>
 <div class="toplink"><a href="#">back to top</a></div>
 
-<!--<h2><a name="limitations">Limitations</a></h2>-->
-<!--<div class="toplink"><a href="#">back to top</a></div>-->
+<h2><a name="limitations">Limitations</a></h2>
+<p>tinyMCE may not work at all when CMSimple_XH is set to any other language
+than English. As a workaround just make a copy of
+plugins/tinymce/tiny_mce/plugins/syntaxhl/langs/en.js and call it according to
+your language (e.g. de.js for German).</p>
+<div class="toplink"><a href="#">back to top</a></div>
 
 <h2><a name="license">License</a></h2>
 <p>Syntaxhighlighter_XH is licensed under
