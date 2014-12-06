@@ -8,7 +8,7 @@
 (function() {
 	//Load the language file.
 	tinymce.PluginManager.requireLangPack('syntaxhl');
-	
+
 	tinymce.create('tinymce.plugins.SyntaxHL', {
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
@@ -54,11 +54,11 @@
 						var sub_menu = menu.add({
 							title : 'SyntaxHL - Edit',
 							icon : '/img/highlight.gif',
-							onclick : function() { 
+							onclick : function() {
 								// get current node and select it for replacement
 								var currentNode = ed.selection.getNode();
 								// select entire snippted and limit to element type.
-								ed.selection.select(currentNode, currentNode.nodeName); 
+								ed.selection.select(currentNode, currentNode.nodeName);
 								ed.windowManager.open({
 									file : url + '/dialog.htm',
 									width : 450 + parseInt(ed.getLang('syntaxhl.delta_width', 0)),
@@ -130,7 +130,7 @@
 	});
 
 	/**
-	 * Check the currently selected node to ensure it is a valid syntaxHighlighter 
+	 * Check the currently selected node to ensure it is a valid syntaxHighlighter
 	 * brush.
 	 *
 	 * @return boolean true if node is valid brush

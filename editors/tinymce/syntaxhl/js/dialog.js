@@ -5,7 +5,7 @@ var SyntaxHLDialog = {
     // get arguments passed from plugin to window.
     var editor_content = tinyMCEPopup.getWindowArg('editor_content');
     var editor_options = tinyMCEPopup.getWindowArg('editor_options');
-    
+
     // check to see if any content was passed to window
     if(editor_content != undefined) {
       // select form and place snippet code into editor window
@@ -91,7 +91,7 @@ var SyntaxHLDialog = {
     textarea_output += f.syntaxhl_language.value + '; ' + options + '">';
     textarea_output +=  tinyMCEPopup.editor.dom.encode(f.syntaxhl_code.value);
     textarea_output += '</pre> '; /* note space at the end, had a bug it was inserting twice? */
-    
+
     // check for replace_element option value and return output accordingly
     if(replace_element == false) {
       tinyMCEPopup.editor.execCommand('mceInsertContent', false, textarea_output);
