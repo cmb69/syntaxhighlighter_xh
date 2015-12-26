@@ -30,87 +30,51 @@ define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
 
 
 /**
- * Returns the brushes necessary to highlight the given $content.
+ * Returns the brush definitions for the autoloader.
  *
- * @param string $content A text to scan for brushes.
- * 
- * @return array
+ * @return string
+ *
+ * @global array The paths of system files and folders.
  */
-function Syntaxhighlighter_brushes($content)
+function Syntaxhighlighter_brushes()
 {
-    $aliases = array(
-        'applescript' => 'shBrushAppleScript',
-        'actionscript3' => 'shBrushAS3',
-        'as3' => 'shBrushAS3',
-        'bash' => 'shBrushBash',
-        'shell' => 'shBrushBash',
-        'coldfusion' => 'shBrushColdFusion',
-        'cf' => 'shBrushColdFusion',
-        'cpp' => 'shBrushCpp',
-        'c' => 'shBrushCpp',
-        'c#' => 'shBrushCSharp',
-        'c-sharp' => 'shBrushCSharp',
-        'csharp' => 'shBrushCSharp',
-        'css' => 'shBrushCSS',
-        'delphi' => 'shBrushDelphi',
-        'pascal' => 'shBrushDelphi',
-        'pas' => 'shBrushDelphi',
-        'diff' => 'shBrushDiff',
-        'patch' => 'shBrushPatch',
-        'erl' => 'shBrushErlang',
-        'erlang' => 'shBrushErlang',
-        'groovy' => 'shBrushGroovy',
-        'java' => 'shBrushJava',
-        'jfx' => 'shBrushJavaFX',
-        'javafx' => 'shBrushJavaFX',
-        'js' => 'shBrushJScript',
-        'jscript' => 'shBrushJScript',
-        'javascript' => 'shBrushJScript',
-        'perl' => 'shBrushPerl',
-        'pl' => 'shBrushPerl',
-        'php' => 'shBrushPhp',
-        'text' => 'shBrushPlain',
-        'plain' => 'shBrushPlain',
-        'py' => 'shBrushPython',
-        'python' => 'shBrushPython',
-        'ruby' => 'shBrushRuby',
-        'rails' => 'shBrushRuby',
-        'ror' => 'shBrushRuby',
-        'rb' => 'shBrushRuby',
-        'sass' => 'shBrushSass',
-        'scss' => 'shBrushSass',
-        'scala' => 'shBrushScala',
-        'sql' => 'shBrushSql',
-        'vb' => 'shBrushVb',
-        'vbnet' => 'shBrushVb',
-        'xml' => 'shBrushXml',
-        'xhtml' => 'shBrushXml',
-        'xslt' => 'shBrushXml',
-        'html' => 'shBrushXml'
+    global $pth;
+    
+    $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/lib/scripts/';
+    $brushes = array(
+        array('applescript', $dir . 'shBrushAppleScript.js'),
+        array('actionscript3', 'as3', $dir . 'shBrushAS3.js'),
+        array('bash', 'shell', $dir . 'shBrushBash.js'),
+        array('coldfusion', 'cf', $dir . 'shBrushColdFusion.js'),
+        array('cpp', 'c', $dir . 'shBrushCpp.js'),
+        array('c#', 'c-sharp', 'csharp', $dir . 'shBrushCSharp.js'),
+        array('css', $dir . 'shBrushCSS.js'),
+        array('delphi', 'pascal', 'pas', $dir . 'shBrushDelphi.js'),
+        array('diff', $dir . 'shBrushDiff.js'),
+        array('patch', $dir . 'shBrushPatch.js'),
+        array('erl', 'erlang', $dir . 'shBrushErlang.js'),
+        array('groovy', $dir . 'shBrushGroovy.js'),
+        array('java', $dir . 'shBrushJava.js'),
+        array('jfx', 'javafx', $dir . 'shBrushJavaFX.js'),
+        array('js', 'jscript', 'javascript', $dir . 'shBrushJScript.js'),
+        array('perl', 'pl', $dir . 'shBrushPerl.js'),
+        array('php', $dir . 'shBrushPhp.js'),
+        array('text', 'plain', $dir . 'shBrushPlain.js'),
+        array('py', 'python', $dir . 'shBrushPython.js'),
+        array('ruby', 'rails', 'ror', 'rb', $dir . 'shBrushRuby.js'),
+        array('sass', 'scss', $dir . 'shBrushSass.js'),
+        array('scala', $dir . 'shBrushScala.js'),
+        array('sql', $dir . 'shBrushSql.js'),
+        array('vb', 'vbnet', $dir . 'shBrushVb.js'),
+        array('xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'),
     );
-
-    preg_match_all('/<pre.*?class=["\'](.*?)["\'].*?>/isu', $content, $matches);
-    $brushes = array();
-    foreach ($matches[1] as $class) {
-        $opts = explode(';', $class);
-        foreach ($opts as $opt) {
-            $opt = array_map('trim', explode(':', $opt));
-            if ($opt[0] == 'brush'
-                && !array_key_exists($aliases[$opt[1]], $brushes)
-            ) {
-                $brushes[] = $aliases[$opt[1]];
-            }
-        }
-    }
-    return $brushes;
+    return implode(',', array_map('json_encode', $brushes));
 }
 
 
 /**
  * Writes the necessary JS and CSS to the head element.
  *
- * @param string $content A text to scan for brushes.
- * 
  * @return void
  * 
  * @global array  The paths of system files and folders.
@@ -118,27 +82,19 @@ function Syntaxhighlighter_brushes($content)
  * @global array  The configuration of the plugins.
  * @global array  The localization of the plugins.
  */
-function syntaxhighlighter($content)
+function syntaxhighlighter()
 {
     global $pth, $hjs, $plugin_cf, $plugin_tx;
 
-    $brushes = syntaxhighlighter_brushes($content);
-    if (empty($brushes)) {
-        return;
-    }
+    $brushes = syntaxhighlighter_brushes();
 
     $pcf = $plugin_cf['syntaxhighlighter'];
     $ptx = $plugin_tx['syntaxhighlighter'];
-    $dir = $pth['folder']['plugins'].'syntaxhighlighter/';
+    $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/';
 
-    foreach (array('shCore', 'shBrushXml') as $f) {
+    foreach (array('shCore', 'shAutoloader') as $f) {
         $fn = $dir . 'lib/scripts/' . $f . '.js';
         $hjs .= '<script type="text/javascript" src="' . $fn . '"></script>'
-            . "\n";
-    }
-    foreach ($brushes as $brush) {
-        $fn = $dir . 'lib/scripts/' . $brush . '.js';
-        $hjs .= '<script type="text/javascript" src="' . $fn. '"></script>'
             . "\n";
     }
     foreach (array('shCore', 'shTheme') as $f) {
@@ -160,8 +116,18 @@ function syntaxhighlighter($content)
     $hjs .= <<<SCRIPT
 <script type="text/javascript">
 /* <![CDATA[ */
-SyntaxHighlighter.config.strings = $strings;
-SyntaxHighlighter.all();
+(function () {
+    function init() {
+	SyntaxHighlighter.autoloader($brushes);
+	SyntaxHighlighter.config.strings = $strings;
+	SyntaxHighlighter.all();
+    }
+    if (typeof window.addEventListener != "undefined") {
+	window.addEventListener("load", init, false);
+    } else if (typeof window.attachEvent != "undefined") {
+	window.attachEvent("onload", init);
+    }
+}());
 /* ]]> */
 </script>
 
@@ -172,8 +138,8 @@ SCRIPT;
 /*
  * Include the necessary JS and CSS.
  */
-if (!$edit && $pd_s >= 0) {
-    Syntaxhighlighter($c[$pd_s]);
+if (!$edit) {
+    syntaxhighlighter();
 }
 
 ?>
