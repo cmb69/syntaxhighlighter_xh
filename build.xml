@@ -18,4 +18,10 @@
         </phpcodesniffer>
     </target>
 
+    <target name="mess" description="detects code flaws">
+        <phpmd>
+            <fileset refid="php-sources"/>
+         </phpmd>
+    </target>
+
 </project>
