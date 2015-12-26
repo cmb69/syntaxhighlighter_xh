@@ -26,7 +26,7 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
 /**
  * The plugin version.
  */
-define('SYNTAXHIGHLIGHTER_VERSION', '1alpha1');
+define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
 
 
 /**
