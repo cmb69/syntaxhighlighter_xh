@@ -12,4 +12,10 @@
         <echo>${help}</echo>
     </target>
     
+    <target name="sniff" description="checks adherence to PEAR CS">
+        <phpcodesniffer standard="PEAR" format="full">
+            <fileset refid="php-sources"/>
+        </phpcodesniffer>
+    </target>
+
 </project>
