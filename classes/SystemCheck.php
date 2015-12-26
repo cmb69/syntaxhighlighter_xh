@@ -30,33 +30,24 @@ class Syntaxhighlighter_SystemCheck
      * @return string (X)HTML.
      *
      * @global array The paths of system files and folders.
-     * @global array The localization of the core.
      * @global array The localization of the plugins.
      */
     public function render()
     {
-        global $pth, $tx, $plugin_tx;
+        global $pth, $plugin_tx;
     
-        $ptx = $plugin_tx['syntaxhighlighter'];
         $imgdir = $pth['folder']['plugins'] . 'syntaxhighlighter/images/';
-        $ok = tag('img src="' . $imgdir . 'ok.png" alt="ok"');
-        $fail = tag('img src="' . $imgdir . 'fail.png" alt="failure"');
-        $o = '<h4>' . $ptx['syscheck_title'] . '</h4>'
+        $html = '<h4>' . $plugin_tx['syntaxhighlighter']['syscheck_title'] . '</h4>'
             . $this->checkPHPVersion('5.2.0') . tag('br') . "\n";
         foreach (array('pcre') as $ext) {
-            $o .= $this->checkExtension($ext) . tag('br') . "\n";
+            $html .= $this->checkExtension($ext) . tag('br') . "\n";
         }
-        $o .= $this->checkMagicQuotesRuntime() . tag('br') . tag('br') . "\n";
-        $o .= (strtoupper($tx['meta']['codepage']) == 'UTF-8' ? $ok : $fail)
-            . '&nbsp;&nbsp;' . $ptx['syscheck_encoding'] . tag('br') . "\n";
-        $folders = array();
-        foreach (array('config/', 'css/', 'languages/') as $folder) {
-            $folders[] = $pth['folder']['plugins'] . 'syntaxhighlighter/' . $folder;
+        $html .= $this->checkMagicQuotesRuntime() . tag('br') . tag('br') . "\n"
+            . $this->checkXHVersion('1.6') . tag('br') . tag('br') . "\n";
+        foreach ($this->getWritableFolders() as $folder) {
+            $html .= $this->checkWritability($folder) . tag('br') . "\n";
         }
-        foreach ($folders as $folder) {
-            $o .= $this->checkWritability($folder) . tag('br') . "\n";
-        }
-        return $o;
+        return $html;
     }
     
     /**
@@ -116,6 +107,40 @@ class Syntaxhighlighter_SystemCheck
     }
     
     /**
+     * Renders the CMSimple_XH version check.
+     *
+     * @param string $version Required CMSimple_XH version.
+     *
+     * @return string (X)HTML
+     *
+     * @global array The localization of the plugins.
+     */
+    protected function checkXHVersion($version)
+    {
+        global $plugin_tx;
+        
+        $kind = $this->hasXHVersion($version) ? 'ok' : 'fail';
+        return $this->renderCheckIcon($kind) . '&nbsp;&nbsp;'
+            . sprintf(
+                $plugin_tx['syntaxhighlighter']['syscheck_xhversion'], $version
+            );
+    }
+    
+    /**
+     * Returns whether at least a certain CMSimple_XH version is installed.
+     *
+     * @param string $version A CMSimple_XH version number.
+     *
+     * @return bool
+     */
+    protected function hasXHVersion($version)
+    {
+        return defined('CMSIMPLE_XH_VERSION')
+            && strpos(CMSIMPLE_XH_VERSION, 'CMSimple_XH') === 0
+            && version_compare(CMSIMPLE_XH_VERSION, "CMSimple_XH {$version}", 'gt');
+    }
+    
+    /**
      * Renders a writability check.
      *
      * @param string $filename A filename.
@@ -153,6 +178,24 @@ class Syntaxhighlighter_SystemCheck
             . $kind . '.png';
         $alt = $plugin_tx['syntaxhighlighter']['syscheck_alt_' . $kind];
         return tag('img src="' . $path  . '" alt="' . $alt . '"');
+    }
+    
+    /**
+     * Returns the folders that should be writable.
+     *
+     * @return array
+     *
+     * @global array The paths of system files and folders.
+     */
+    protected function getWritableFolders()
+    {
+        global $pth;
+        
+        $folders = array();
+        foreach (array('config/', 'css/', 'languages/') as $folder) {
+            $folders[] = $pth['folder']['plugins'] . 'syntaxhighlighter/' . $folder;
+        }
+        return $folders;
     }
 }
 
