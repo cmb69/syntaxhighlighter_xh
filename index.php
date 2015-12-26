@@ -3,7 +3,7 @@
 /**
  * Front-end of Syntaxhighlighter_XH.
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * @category  CMSimple_XH
  * @package   Syntaxhighlighter
@@ -147,30 +147,21 @@ function syntaxhighlighter($content)
             . "\n";
     }
 
-    $strs = array();
+    $strings = array();
     $keys = array('expand_source', 'help', 'alert', 'no_brush',
         'brush_not_html_script');
     foreach ($keys as $key) {
         $jskey = substr($key, 0, 1)
             . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
-        $strs[] = $jskey . " = '"
-            . addcslashes($ptx[$key], "\0..\37\"\'\\") . "';";
+        $strings[$jskey] = $ptx[$key];
     }
-    $strs = implode("\n        ", $strs);
-
-    $defs = array();
-    $defs = implode("\n    ", $defs);
+    $strings = json_encode($strings);
 
     $hjs .= <<<SCRIPT
 <script type="text/javascript">
 /* <![CDATA[ */
-with (SyntaxHighlighter) {
-    with (config.strings) {
-        $strs
-    }
-    $defs
-    all()
-}
+SyntaxHighlighter.config.strings = $strings;
+SyntaxHighlighter.all();
 /* ]]> */
 </script>
 
