@@ -4,7 +4,7 @@
  * Back-end of Syntaxhighlighter_XH.
  *
  * @package	Syntaxhighlighter
- * @copyright	Copyright (c) 2012-2013 Christoph M. Becker <http://3-magi.net/>
+ * @copyright	Copyright (c) 2012-2015 Christoph M. Becker <http://3-magi.net/>
  * @license	http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @version     $Id$
  * @link	http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
@@ -32,7 +32,7 @@ function Syntaxhighlighter_version()
     return '<h1><a href="http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH">Syntaxhighlighter_XH</a></h1>'."\n"
 	. tag('img src="'.$pth['folder']['plugins'].'syntaxhighlighter/syntaxhighlighter.png" style="float: left; margin: 0 16px 16px 0"')
 	. '<p>Version: '.SYNTAXHIGHLIGHTER_VERSION.'</p>'."\n"
-	. '<p>Copyright &copy; 2012-2013 <a href="http://3-magi.net">Christoph M. Becker</a></p>'."\n"
+	. '<p>Copyright &copy; 2012-2015 <a href="http://3-magi.net">Christoph M. Becker</a></p>'."\n"
 	. '<p>Powered by <a href="http://alexgorbatchev.com/SyntaxHighlighter/">Alex Gorbatchev\'s SyntaxHighlighter</a></p>'
 	. '<p style="text-align: justify">'
 	. 'This program is free software: you can redistribute it and/or modify'
