@@ -38,8 +38,13 @@ class Syntaxhighlighter_Controller
         if (!$edit) {
             $this->init();
         }
-        if (defined('XH_ADM') && XH_ADM && $this->wantsPluginAdministration()) {
-            $this->handleAdministration();
+        if (defined('XH_ADM') && XH_ADM) {
+            if (function_exists('XH_registerStandardPluginMenuItems')) {
+                XH_registerStandardPluginMenuItems(false);
+            }
+            if ($this->wantsPluginAdministration()) {
+                $this->handleAdministration();
+            }
         }
     }
     
