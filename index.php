@@ -3,7 +3,7 @@
 /**
  * Front-end of Syntaxhighlighter_XH.
  *
- * PHP version 5
+ * PHP versions 4 and 5
  *
  * @category  CMSimple_XH
  * @package   Syntaxhighlighter

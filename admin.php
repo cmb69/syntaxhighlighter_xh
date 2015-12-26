@@ -3,7 +3,7 @@
 /**
  * Back-end of Syntaxhighlighter_XH.
  *
- * PHP version 5
+ * PHP versions 4 and 5
  *
  * @category  CMSimple_XH
  * @package   Syntaxhighlighter
@@ -69,7 +69,6 @@ function Syntaxhighlighter_version()
  */
 function Syntaxhighlighter_systemCheck()
 {
-    // RELEASE-TODO
     global $pth, $tx, $plugin_tx;
 
     define('SYNTAXHIGHLIGHTER_PHP_VERSION', '4.0.7');

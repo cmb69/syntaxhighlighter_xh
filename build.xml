@@ -24,4 +24,8 @@
          </phpmd>
     </target>
 
+    <target name="compat" description="checks compatibility with PHP_CompatInfo">
+        <exec command="phpcompatinfo analyser:run --alias current" logoutput="true"/>
+    </target>
+
 </project>
