@@ -13,22 +13,10 @@
  * @link      http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
  */
 
-
-/*
- * Prevent direct access.
- */
-if (!defined('CMSIMPLE_XH_VERSION')) {
-    header('HTTP/1.0 403 Forbidden');
-    exit;
-}
-
-
 /**
  * The plugin version.
  */
 define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
-
-require_once $pth['folder']['plugin_classes'] . 'Controller.php';
 
 $temp = new Syntaxhighlighter_Controller();
 $temp->dispatch();

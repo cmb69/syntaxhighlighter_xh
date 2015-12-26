@@ -30,30 +30,55 @@ class Syntaxhighlighter_Controller
      * @return void
      *
      * @global bool   Whether we're in edit mode.
-     * @global bool   Whether the plugin administration is requested.
-     * @global string The value of the 'admin' GP parameter.
-     * @global string The value of the 'action' GP parameter.
-     * @global string The content of the main output.
      */
     public function dispatch()
     {
-        global $edit, $syntaxhighlighter, $admin, $action, $o;
+        global $edit;
         
         if (!$edit) {
             $this->init();
         }
-        if (defined('XH_ADM') && XH_ADM
-            && isset($syntaxhighlighter) && $syntaxhighlighter == 'true'
-        ) {
-            $o .= print_plugin_admin('off');
-            switch ($admin) {
-            case '':
-                $o .= $this->version() . tag('hr')
-                    . $this->systemCheck();
-                break;
-            default:
-                $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
-            }
+        if (defined('XH_ADM') && XH_ADM && $this->wantsPluginAdministration()) {
+            $this->handleAdministration();
+        }
+    }
+    
+     /**
+     * Returns whether the plugin administration is requested.
+     *
+     * @return bool
+     *
+     * @global string Whether the chat administration is requested.
+     */
+    protected function wantsPluginAdministration()
+    {
+        global $syntaxhighlighter;
+
+        return function_exists('XH_wantsPluginAdministration')
+            && XH_wantsPluginAdministration('syntaxhighlighter')
+            || isset($syntaxhighlighter) && $syntaxhighlighter == 'true';
+    }
+    
+     /**
+     * Handle the plugin administration.
+     *
+     * @return void
+     *
+     * @global string The (X)HTML of the contents area.
+     * @global string The value of the admin GP parameter.
+     * @global string The value of the action GP parameter.
+     */
+    protected function handleAdministration()
+    {
+        global $o, $admin, $action;
+
+        $o .= print_plugin_admin('off');
+        switch ($admin) {
+        case '':
+            $o .= $this->version() . tag('hr') . $this->systemCheck();
+            break;
+        default:
+            $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
         }
     }
     
@@ -202,51 +227,16 @@ SCRIPT;
             . ' <a href="http://www.gnu.org/licenses/">'
             . 'http://www.gnu.org/licenses/</a>.</p>' . "\n";
     }
-    
-    
+
     /**
      * Returns the requirements information view.
      *
      * @return string (X)HTML.
-     *
-     * @global array The paths of system files and folders.
-     * @global array The localization of the core.
-     * @global array The localization of the plugins.
      */
     protected function systemCheck()
     {
-        global $pth, $tx, $plugin_tx;
-    
-        $phpVersion = '5.2.0';
-        $ptx = $plugin_tx['syntaxhighlighter'];
-        $imgdir = $pth['folder']['plugins'] . 'syntaxhighlighter/images/';
-        $ok = tag('img src="' . $imgdir . 'ok.png" alt="ok"');
-        $warn = tag('img src="' . $imgdir . 'warn.png" alt="warning"');
-        $fail = tag('img src="' . $imgdir . 'fail.png" alt="failure"');
-        $o = '<h4>' . $ptx['syscheck_title'] . '</h4>'
-            . (version_compare(PHP_VERSION, $phpVersion) >= 0 ? $ok : $fail)
-            . '&nbsp;&nbsp;' . sprintf($ptx['syscheck_phpversion'], $phpVersion)
-            . tag('br') . "\n";
-        foreach (array('pcre') as $ext) {
-            $o .= (extension_loaded($ext) ? $ok : $fail)
-                . '&nbsp;&nbsp;' . sprintf($ptx['syscheck_extension'], $ext)
-                . tag('br') . "\n";
-        }
-        $o .= (!get_magic_quotes_runtime() ? $ok : $fail)
-            . '&nbsp;&nbsp;' . $ptx['syscheck_magic_quotes']
-            . tag('br') . tag('br') . "\n";
-        $o .= (strtoupper($tx['meta']['codepage']) == 'UTF-8' ? $ok : $fail)
-            . '&nbsp;&nbsp;' . $ptx['syscheck_encoding'] . tag('br') . "\n";
-        $folders = array();
-        foreach (array('config/', 'css/', 'languages/') as $folder) {
-            $folders[] = $pth['folder']['plugins'] . 'syntaxhighlighter/' . $folder;
-        }
-        foreach ($folders as $folder) {
-            $o .= (is_writable($folder) ? $ok : $warn)
-                . '&nbsp;&nbsp;' . sprintf($ptx['syscheck_writable'], $folder)
-                . tag('br') . "\n";
-        }
-        return $o;
+        $check = new Syntaxhighlighter_SystemCheck();
+        return $check->render();
     }
 }
 
