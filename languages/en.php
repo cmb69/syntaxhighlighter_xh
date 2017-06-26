@@ -12,7 +12,6 @@ $plugin_tx['syntaxhighlighter']['syscheck_alt_warn']="Warning";
 $plugin_tx['syntaxhighlighter']['syscheck_alt_fail']="Failure";
 $plugin_tx['syntaxhighlighter']['syscheck_phpversion']="PHP version &ge; %s";
 $plugin_tx['syntaxhighlighter']['syscheck_extension']="Extension '%s' loaded";
-$plugin_tx['syntaxhighlighter']['syscheck_magic_quotes']="Magic quotes runtime off";
 $plugin_tx['syntaxhighlighter']['syscheck_writable']="Folder '%s' writable";
 $plugin_tx['syntaxhighlighter']['syscheck_xhversion']="CMSimple_XH version &ge; %s";
 

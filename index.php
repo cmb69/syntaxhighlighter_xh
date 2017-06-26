@@ -18,7 +18,6 @@
  */
 define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
 
-$temp = new Syntaxhighlighter_Controller();
-$temp->dispatch();
+(new Syntaxhighlighter_Controller())->dispatch();
 
 ?>

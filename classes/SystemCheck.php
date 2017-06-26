@@ -38,12 +38,11 @@ class Syntaxhighlighter_SystemCheck
     
         $imgdir = $pth['folder']['plugins'] . 'syntaxhighlighter/images/';
         $html = '<h4>' . $plugin_tx['syntaxhighlighter']['syscheck_title'] . '</h4>'
-            . $this->checkPHPVersion('5.2.0') . tag('br') . "\n";
-        foreach (array('pcre') as $ext) {
+            . $this->checkPHPVersion('5.4.0') . tag('br') . "\n";
+        foreach (array('json') as $ext) {
             $html .= $this->checkExtension($ext) . tag('br') . "\n";
         }
-        $html .= $this->checkMagicQuotesRuntime() . tag('br') . tag('br') . "\n"
-            . $this->checkXHVersion('1.6.3') . tag('br') . tag('br') . "\n";
+        $html .= $this->checkXHVersion('1.6.3') . tag('br') . "\n";
         foreach ($this->getWritableFolders() as $folder) {
             $html .= $this->checkWritability($folder) . tag('br') . "\n";
         }
@@ -88,22 +87,6 @@ class Syntaxhighlighter_SystemCheck
             . sprintf(
                 $plugin_tx['syntaxhighlighter']['syscheck_extension'], $name
             );
-    }
-    
-    /**
-     * Renders the magic_quotes_runtime check.
-     *
-     * @return string (X)HTML
-     *
-     * @global array The localization of the plugins.
-     */
-    protected function checkMagicQuotesRuntime()
-    {
-        global $plugin_tx;
-        
-        $kind = get_magic_quotes_runtime() ? 'fail' : 'ok';
-        return $this->renderCheckIcon($kind). '&nbsp;&nbsp;'
-            . $plugin_tx['syntaxhighlighter']['syscheck_magic_quotes'];
     }
     
     /**
