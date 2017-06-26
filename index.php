@@ -18,6 +18,6 @@
  */
 define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
 
-(new Syntaxhighlighter_Controller())->dispatch();
+(new Syntaxhighlighter\Controller())->dispatch();
 
 ?>

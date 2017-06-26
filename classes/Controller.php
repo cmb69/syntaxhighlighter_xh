@@ -13,6 +13,8 @@
  * @link      http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
  */
 
+namespace Syntaxhighlighter;
+
 /**
  * The syntaxhighlighter controllers.
  *
@@ -22,7 +24,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @link     http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
  */
-class Syntaxhighlighter_Controller
+class Controller
 {
     /**
      * Dispatches on plugin related requests.
@@ -222,7 +224,7 @@ SCRIPT;
      */
     protected function systemCheck()
     {
-        $check = new Syntaxhighlighter_SystemCheck();
+        $check = new SystemCheck();
         return $check->render();
     }
 }
