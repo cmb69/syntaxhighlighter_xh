@@ -84,6 +84,7 @@ class Controller
             array('js', 'jscript', 'javascript', $dir . 'shBrushJScript.js'),
             array('perl', 'pl', $dir . 'shBrushPerl.js'),
             array('php', $dir . 'shBrushPhp.js'),
+            array('powershell', $dir . 'shBrushPowershell.js'),
             array('text', 'plain', $dir . 'shBrushPlain.js'),
             array('py', 'python', $dir . 'shBrushPython.js'),
             array('ruby', 'rails', 'ror', 'rb', $dir . 'shBrushRuby.js'),
