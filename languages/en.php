@@ -15,5 +15,7 @@ $plugin_tx['syntaxhighlighter']['syscheck_extension']="Extension '%s' loaded";
 $plugin_tx['syntaxhighlighter']['syscheck_writable']="Folder '%s' writable";
 $plugin_tx['syntaxhighlighter']['syscheck_xhversion']="CMSimple_XH version &ge; %s";
 
+$plugin_tx['syntaxhighlighter']['alt_logo']="Marker Pen";
+
 $plugin_tx['syntaxhighlighter']['cf_theme']="The theme of the syntax highlighting: \"Default\", \"Django\", \"Eclipse\", \"Emacs\", \"FadeToGrey\", \"MDUltra\", \"Midnight\" or \"RDark\".";
 ?>
