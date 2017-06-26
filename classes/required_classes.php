@@ -13,21 +13,11 @@
  * @link      http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
  */
 
-spl_autoload_register('Syntaxhighlighter_autoload');
-
-/**
- * The autoloader.
- *
- * @param string $className A class name.
- *
- * @return void
- */
-function Syntaxhighlighter_autoload($className)
-{
+spl_autoload_register(function ($className) {
     $parts = explode('_', $className);
     if ($parts[0] == 'Syntaxhighlighter') {
         include_once dirname(__FILE__) . '/' . $parts[1] . '.php';
     }
-}
+});
 
 ?>
