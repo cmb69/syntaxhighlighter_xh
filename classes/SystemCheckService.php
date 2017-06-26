@@ -80,6 +80,7 @@ class SystemCheckService
         $stateLabel = $this->lang["syscheck_$state"];
         return (object) compact('state', 'label', 'stateLabel');
     }
+
     /**
      * @param string $version
      * @return object

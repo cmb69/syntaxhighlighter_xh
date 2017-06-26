@@ -29,7 +29,7 @@ class Controller
     public function dispatch()
     {
         global $edit;
-        
+
         if (!$edit) {
             $this->init();
         }
@@ -57,14 +57,14 @@ class Controller
                 $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
         }
     }
-    
+
     /**
      * @return string
      */
     private function getBrushes()
     {
         global $pth;
-        
+
         $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/lib/scripts/';
         $brushes = array(
             array('applescript', $dir . 'shBrushAppleScript.js'),
@@ -102,13 +102,13 @@ class Controller
     private function init()
     {
         global $pth, $hjs, $plugin_cf, $plugin_tx;
-    
+
         $brushes = $this->getBrushes();
-    
+
         $pcf = $plugin_cf['syntaxhighlighter'];
         $ptx = $plugin_tx['syntaxhighlighter'];
         $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/';
-    
+
         foreach (array('shCore', 'shAutoloader') as $f) {
             $fn = $dir . 'lib/scripts/' . $f . '.js';
             $hjs .= '<script type="text/javascript" src="' . $fn . '"></script>'
@@ -119,7 +119,7 @@ class Controller
             $hjs .= tag('link rel="stylesheet" href="' . $fn . '" type="text/css"')
                 . "\n";
         }
-    
+
         $strings = array();
         $keys = array('expand_source', 'help', 'alert', 'no_brush',
             'brush_not_html_script');
@@ -129,7 +129,7 @@ class Controller
             $strings[$jskey] = $ptx[$key];
         }
         $strings = json_encode($strings);
-    
+
         $hjs .= <<<SCRIPT
 <script type="text/javascript">
 /* <![CDATA[ */
@@ -159,7 +159,7 @@ SCRIPT;
     private function version()
     {
         global $pth;
-    
+
         $view = new View('info');
         $view->logo = "{$pth['folder']['plugins']}syntaxhighlighter/syntaxhighlighter.png";
         $view->version = SYNTAXHIGHLIGHTER_VERSION;
