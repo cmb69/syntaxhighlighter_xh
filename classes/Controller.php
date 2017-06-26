@@ -51,7 +51,7 @@ class Controller
         $o .= print_plugin_admin('off');
         switch ($admin) {
             case '':
-                $o .= $this->version() . tag('hr') . $this->systemCheck();
+                $o .= $this->version();
                 break;
             default:
                 $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
@@ -163,15 +163,7 @@ SCRIPT;
         $view = new View('info');
         $view->logo = "{$pth['folder']['plugins']}syntaxhighlighter/syntaxhighlighter.png";
         $view->version = SYNTAXHIGHLIGHTER_VERSION;
+        $view->checks = (new SystemCheckService)->getChecks();
         return (string) $view;
-    }
-
-    /**
-     * @return string
-     */
-    private function systemCheck()
-    {
-        $check = new SystemCheck();
-        return $check->render();
     }
 }
