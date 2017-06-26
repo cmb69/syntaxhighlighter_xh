@@ -1,37 +1,30 @@
 <?php
 
 /**
- * The syntaxhighlighter controllers.
+ * Copyright 2012-2017 Christoph M. Becker
  *
- * PHP version 5
+ * This file is part of Syntaxhighlighter_XH.
  *
- * @category  CMSimple_XH
- * @package   Syntaxhighlighter
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
- * @copyright 2012-2017 Christoph M. Becker <http://3-magi.net/>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link      http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
+ * Syntaxhighlighter_XH is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Syntaxhighlighter_XH is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Syntaxhighlighter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 namespace Syntaxhighlighter;
 
-/**
- * The syntaxhighlighter controllers.
- *
- * @category CMSimple_XH
- * @package  Syntaxhighlighter
- * @author   Christoph M. Becker <cmbecker69@gmx.de>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link     http://3-magi.net/?CMSimple_XH/Syntaxhighlighter_XH
- */
 class Controller
 {
     /**
-     * Dispatches on plugin related requests.
-     *
      * @return void
-     *
-     * @global bool   Whether we're in edit mode.
      */
     public function dispatch()
     {
@@ -49,36 +42,26 @@ class Controller
     }
 
      /**
-     * Handle the plugin administration.
-     *
      * @return void
-     *
-     * @global string The (X)HTML of the contents area.
-     * @global string The value of the admin GP parameter.
-     * @global string The value of the action GP parameter.
      */
-    protected function handleAdministration()
+    private function handleAdministration()
     {
         global $o, $admin, $action;
 
         $o .= print_plugin_admin('off');
         switch ($admin) {
-        case '':
-            $o .= $this->version() . tag('hr') . $this->systemCheck();
-            break;
-        default:
-            $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
+            case '':
+                $o .= $this->version() . tag('hr') . $this->systemCheck();
+                break;
+            default:
+                $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
         }
     }
     
     /**
-     * Returns the brush definitions for the autoloader.
-     *
      * @return string
-     *
-     * @global array The paths of system files and folders.
      */
-    protected function getBrushes()
+    private function getBrushes()
     {
         global $pth;
         
@@ -114,16 +97,9 @@ class Controller
     }
 
     /**
-     * Writes the necessary JS and CSS to the head element.
-     *
      * @return void
-     * 
-     * @global array  The paths of system files and folders.
-     * @global string Elements to be inserted in the head element.
-     * @global array  The configuration of the plugins.
-     * @global array  The localization of the plugins.
      */
-    protected function init()
+    private function init()
     {
         global $pth, $hjs, $plugin_cf, $plugin_tx;
     
@@ -178,13 +154,9 @@ SCRIPT;
     }
 
     /**
-     * Returns the plugin version information view.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The paths of system files and folders.
+     * @return string
      */
-    protected function version()
+    private function version()
     {
         global $pth;
     
@@ -218,15 +190,11 @@ SCRIPT;
     }
 
     /**
-     * Returns the requirements information view.
-     *
-     * @return string (X)HTML.
+     * @return string
      */
-    protected function systemCheck()
+    private function systemCheck()
     {
         $check = new SystemCheck();
         return $check->render();
     }
 }
-
-?>
