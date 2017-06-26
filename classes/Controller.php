@@ -38,32 +38,14 @@ class Syntaxhighlighter_Controller
         if (!$edit) {
             $this->init();
         }
-        if (defined('XH_ADM') && XH_ADM) {
-            if (function_exists('XH_registerStandardPluginMenuItems')) {
-                XH_registerStandardPluginMenuItems(false);
-            }
-            if ($this->wantsPluginAdministration()) {
+        if (XH_ADM) {
+            XH_registerStandardPluginMenuItems(false);
+            if (XH_wantsPluginAdministration('syntaxhighlighter')) {
                 $this->handleAdministration();
             }
         }
     }
-    
-     /**
-     * Returns whether the plugin administration is requested.
-     *
-     * @return bool
-     *
-     * @global string Whether the chat administration is requested.
-     */
-    protected function wantsPluginAdministration()
-    {
-        global $syntaxhighlighter;
 
-        return function_exists('XH_wantsPluginAdministration')
-            && XH_wantsPluginAdministration('syntaxhighlighter')
-            || isset($syntaxhighlighter) && $syntaxhighlighter == 'true';
-    }
-    
      /**
      * Handle the plugin administration.
      *

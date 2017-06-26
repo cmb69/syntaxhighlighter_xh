@@ -43,7 +43,7 @@ class Syntaxhighlighter_SystemCheck
             $html .= $this->checkExtension($ext) . tag('br') . "\n";
         }
         $html .= $this->checkMagicQuotesRuntime() . tag('br') . tag('br') . "\n"
-            . $this->checkXHVersion('1.6') . tag('br') . tag('br') . "\n";
+            . $this->checkXHVersion('1.6.3') . tag('br') . tag('br') . "\n";
         foreach ($this->getWritableFolders() as $folder) {
             $html .= $this->checkWritability($folder) . tag('br') . "\n";
         }
