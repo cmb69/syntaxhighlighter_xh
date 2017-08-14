@@ -21,17 +21,17 @@
 
 namespace Syntaxhighlighter;
 
-class Controller
+class Plugin
 {
     /**
      * @return void
      */
-    public function dispatch()
+    public function run()
     {
         global $edit;
 
         if (!$edit) {
-            $this->init();
+            $this->initHighlighter();
         }
         if (XH_ADM) {
             XH_registerStandardPluginMenuItems(false);
@@ -51,7 +51,7 @@ class Controller
         $o .= print_plugin_admin('off');
         switch ($admin) {
             case '':
-                $o .= $this->version();
+                $o .= $this->renderInfo();
                 break;
             default:
                 $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
@@ -100,7 +100,7 @@ class Controller
     /**
      * @return void
      */
-    private function init()
+    private function initHighlighter()
     {
         global $pth, $hjs, $plugin_cf, $plugin_tx;
 
@@ -157,7 +157,7 @@ SCRIPT;
     /**
      * @return string
      */
-    private function version()
+    private function renderInfo()
     {
         global $pth;
 

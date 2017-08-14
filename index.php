@@ -21,4 +21,4 @@
 
 define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
 
-(new Syntaxhighlighter\Controller())->dispatch();
+(new Syntaxhighlighter\Plugin())->run();
