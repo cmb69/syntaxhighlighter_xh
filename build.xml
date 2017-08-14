@@ -44,6 +44,13 @@
                 </replacetokens>
             </filterchain>
         </move>
+        <copy file="export/editors/tinymce4/syntaxhl/plugin.min.js"
+              tofile="export/editors/tinymce4/syntaxhl/plugin.js"/>
+        <jsMin targetDir="dist" suffix="" failOnError="false">
+            <fileset dir="export">
+                <include name="editors/tinymce4/syntaxhl/plugin.min.js"/>
+            </fileset>
+        </jsMin>
         <move todir="dist">
             <fileset dir="export">
                 <exclude name="syntaxhighlighter.komodoproject"/>
