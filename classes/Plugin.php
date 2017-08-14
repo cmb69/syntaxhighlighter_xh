@@ -114,13 +114,11 @@ class Plugin
 
         foreach (array('shCore', 'shAutoloader') as $f) {
             $fn = $dir . 'lib/scripts/' . $f . '.js';
-            $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>'
-                . "\n";
+            $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>' . "\n";
         }
         foreach (array('shCore', 'shTheme') as $f) {
             $fn = $dir . '/lib/styles/' . $f . $pcf['theme'] . '.css';
-            $hjs .= tag('link rel="stylesheet" href="' . $fn . '" type="text/css"')
-                . "\n";
+            $hjs .= '<link rel="stylesheet" href="' . $fn . '" type="text/css">' . "\n";
         }
 
         $strings = array();
