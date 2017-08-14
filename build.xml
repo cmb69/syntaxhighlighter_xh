@@ -77,7 +77,6 @@
         </jsMin>
         <move todir="dist">
             <fileset dir="export">
-                <exclude name="syntaxhighlighter.komodoproject"/>
                 <exclude name="build.xml"/>
                 <exclude name="composer.*"/>
                 <exclude name="phpcompatinfo.*"/>
