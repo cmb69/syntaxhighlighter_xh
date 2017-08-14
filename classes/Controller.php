@@ -136,16 +136,16 @@ class Controller
 /* <![CDATA[ */
 (function () {
     function init() {
-	var aboutDialog = SyntaxHighlighter.config.strings.aboutDialog;
-	SyntaxHighlighter.autoloader($brushes);
-	SyntaxHighlighter.config.strings = $strings;
-	SyntaxHighlighter.config.strings.aboutDialog = aboutDialog;
-	SyntaxHighlighter.all();
+        var aboutDialog = SyntaxHighlighter.config.strings.aboutDialog;
+        SyntaxHighlighter.autoloader($brushes);
+        SyntaxHighlighter.config.strings = $strings;
+        SyntaxHighlighter.config.strings.aboutDialog = aboutDialog;
+        SyntaxHighlighter.all();
     }
     if (typeof window.addEventListener != "undefined") {
-	window.addEventListener("load", init, false);
+        window.addEventListener("load", init, false);
     } else if (typeof window.attachEvent != "undefined") {
-	window.attachEvent("onload", init);
+        window.attachEvent("onload", init);
     }
 }());
 /* ]]> */
