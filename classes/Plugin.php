@@ -104,7 +104,7 @@ class Plugin
      */
     private function initHighlighter()
     {
-        global $pth, $hjs, $plugin_cf, $plugin_tx;
+        global $pth, $hjs, $bjs, $plugin_cf, $plugin_tx;
 
         $brushes = $this->getBrushes();
 
@@ -114,7 +114,7 @@ class Plugin
 
         foreach (array('shCore', 'shAutoloader') as $f) {
             $fn = $dir . 'lib/scripts/' . $f . '.js';
-            $hjs .= '<script type="text/javascript" src="' . $fn . '"></script>'
+            $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>'
                 . "\n";
         }
         foreach (array('shCore', 'shTheme') as $f) {
@@ -135,22 +135,18 @@ class Plugin
 
         $hjs .= <<<SCRIPT
 <script type="text/javascript">
-/* <![CDATA[ */
 (function () {
-    function init() {
+    if (!("addEventListener" in document)) {
+        return;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
         var aboutDialog = SyntaxHighlighter.config.strings.aboutDialog;
         SyntaxHighlighter.autoloader($brushes);
         SyntaxHighlighter.config.strings = $strings;
         SyntaxHighlighter.config.strings.aboutDialog = aboutDialog;
         SyntaxHighlighter.all();
-    }
-    if (typeof window.addEventListener != "undefined") {
-        window.addEventListener("load", init, false);
-    } else if (typeof window.attachEvent != "undefined") {
-        window.attachEvent("onload", init);
-    }
+    });
 }());
-/* ]]> */
 </script>
 
 SCRIPT;
