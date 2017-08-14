@@ -18,5 +18,4 @@ $plugin_tx['syntaxhighlighter']['syscheck_xhversion']="CMSimple_XH version ≥ %
 
 $plugin_tx['syntaxhighlighter']['alt_logo']="Marker Pen";
 
-$plugin_tx['syntaxhighlighter']['cf_theme']="The theme of the syntax highlighting: \"Default\", \"Django\", \"Eclipse\", \"Emacs\", \"FadeToGrey\", \"MDUltra\", \"Midnight\" or \"RDark\".";
-?>
+$plugin_tx['syntaxhighlighter']['cf_theme']="The syntax highlighting theme.";

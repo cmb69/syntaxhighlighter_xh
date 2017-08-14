@@ -20,3 +20,18 @@
  */
 
 (new Syntaxhighlighter\Plugin())->run();
+
+function Syntaxhighlighter_themes()
+{
+    global $pth;
+
+    $themeFolder = "{$pth['folder']['plugins']}syntaxhighlighter/lib/styles/";
+    $themes = [];
+    foreach (scandir($themeFolder) as $filename) {
+        if (preg_match('/shTheme(\w+)\.css/', $filename, $matches)) {
+            $themes[] = $matches[1];
+        }
+    }
+    sort($themes);
+    return $themes;
+}
