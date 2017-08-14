@@ -19,6 +19,4 @@
  * along with Syntaxhighlighter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('SYNTAXHIGHLIGHTER_VERSION', '@SYNTAXHIGHLIGHTER_VERSION@');
-
 (new Syntaxhighlighter\Plugin())->run();

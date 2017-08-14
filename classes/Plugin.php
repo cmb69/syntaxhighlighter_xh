@@ -23,6 +23,8 @@ namespace Syntaxhighlighter;
 
 class Plugin
 {
+    const VERSION = '@SYNTAXHIGHLIGHTER_VERSION@';
+
     /**
      * @return void
      */
@@ -163,7 +165,7 @@ SCRIPT;
 
         $view = new View('info');
         $view->logo = "{$pth['folder']['plugins']}syntaxhighlighter/syntaxhighlighter.png";
-        $view->version = SYNTAXHIGHLIGHTER_VERSION;
+        $view->version = self::VERSION;
         $view->checks = (new SystemCheckService)->getChecks();
         return (string) $view;
     }
