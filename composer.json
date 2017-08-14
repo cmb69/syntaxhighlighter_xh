@@ -1,6 +1,7 @@
 {
     "require-dev": {
         "phing/phing": "2.16.*",
+        "leafo/scssphp": "0.6.*",
         "squizlabs/php_codesniffer": "2.9.*",
         "phpmd/phpmd": "2.6.*",
         "bartlett/php-compatinfo": "5.0.*",
