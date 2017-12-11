@@ -75,7 +75,7 @@ class Plugin
             array('coldfusion', 'cf', $dir . 'shBrushColdFusion.js'),
             array('cpp', 'c', $dir . 'shBrushCpp.js'),
             array('c#', 'c-sharp', 'csharp', $dir . 'shBrushCSharp.js'),
-            array('css', $dir . 'shBrushCSS.js'),
+            array('css', $dir . 'shBrushCss.js'),
             array('delphi', 'pascal', 'pas', $dir . 'shBrushDelphi.js'),
             array('diff', $dir . 'shBrushDiff.js'),
             array('patch', $dir . 'shBrushPatch.js'),
