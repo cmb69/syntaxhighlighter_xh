@@ -23,7 +23,7 @@ namespace Syntaxhighlighter;
 
 class Plugin
 {
-    const VERSION = '@SYNTAXHIGHLIGHTER_VERSION@';
+    const VERSION = '1.0beta1';
 
     /**
      * @return void
