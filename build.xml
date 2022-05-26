@@ -32,13 +32,15 @@
         <exec command="git archive -o export.zip HEAD" checkreturn="true"/>
         <unzip file="export.zip" todir="export"/>
         <delete file="export.zip"/>
-        <copy file="export/editors/tinymce4/syntaxhl/plugin.min.js"
-              tofile="export/editors/tinymce4/syntaxhl/plugin.js"/>
-        <jsMin targetDir="dist" suffix="" failOnError="false">
-            <fileset dir="export">
-                <include name="editors/tinymce4/syntaxhl/plugin.min.js"/>
-            </fileset>
-        </jsMin>
+        <exec executable="uglifyjs" checkreturn="true">
+            <arg file="export/editors/tinymce4/syntaxhl/plugin.min.js"/>
+            <arg line="--comments /^!/"/>
+            <arg value="--compress"/>
+            <arg value="--mangle"/>
+            <arg value="--toplevel"/>
+            <arg value="--output"/>
+            <arg file="export/editors/tinymce4/syntaxhl/plugin.min.js"/>
+        </exec>
         <move todir="dist">
             <fileset dir="export">
                 <exclude name="build.xml"/>
