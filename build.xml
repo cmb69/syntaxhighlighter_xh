@@ -29,9 +29,9 @@
     </target>
 
     <target name="build" description="builds a distributable ZIP archive">
-        <exec command="git archive -o export.tar HEAD" checkreturn="true"/>
-        <untar file="export.tar" todir="export"/>
-        <delete file="export.tar"/>
+        <exec command="git archive -o export.zip HEAD" checkreturn="true"/>
+        <unzip file="export.zip" todir="export"/>
+        <delete file="export.zip"/>
         <copy file="export/editors/tinymce4/syntaxhl/plugin.min.js"
               tofile="export/editors/tinymce4/syntaxhl/plugin.js"/>
         <jsMin targetDir="dist" suffix="" failOnError="false">
