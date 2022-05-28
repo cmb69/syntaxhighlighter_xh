@@ -87,7 +87,7 @@ class Plugin
             ['vb', 'vbnet', $dir . 'shBrushVb.js'],
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
-        return json_encode($brushes, JSON_HEX_APOS|JSON_UNESCAPED_SLASHES);
+        return json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
     }
 
     private function initHighlighter(): void
@@ -117,7 +117,7 @@ class Plugin
                 . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
             $strings[$jskey] = $ptx[$key];
         }
-        $strings = json_encode($strings, JSON_HEX_APOS|JSON_UNESCAPED_SLASHES);
+        $strings = json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
 
         $hjs .= "<meta name=\"syntaxhighlighter.strings\" content='{$strings}'>\n";
 
