@@ -54,75 +54,9 @@ class Plugin
         }
     }
 
-    private function getBrushes(): string
-    {
-        global $pth;
-
-        $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/lib/scripts/';
-        $brushes = [
-            ['applescript', $dir . 'shBrushAppleScript.js'],
-            ['actionscript3', 'as3', $dir . 'shBrushAS3.js'],
-            ['bash', 'shell', $dir . 'shBrushBash.js'],
-            ['coldfusion', 'cf', $dir . 'shBrushColdFusion.js'],
-            ['cpp', 'c', $dir . 'shBrushCpp.js'],
-            ['c#', 'c-sharp', 'csharp', $dir . 'shBrushCSharp.js'],
-            ['css', $dir . 'shBrushCss.js'],
-            ['delphi', 'pascal', 'pas', $dir . 'shBrushDelphi.js'],
-            ['diff', $dir . 'shBrushDiff.js'],
-            ['patch', $dir . 'shBrushPatch.js'],
-            ['erl', 'erlang', $dir . 'shBrushErlang.js'],
-            ['groovy', $dir . 'shBrushGroovy.js'],
-            ['java', $dir . 'shBrushJava.js'],
-            ['jfx', 'javafx', $dir . 'shBrushJavaFX.js'],
-            ['js', 'jscript', 'javascript', $dir . 'shBrushJScript.js'],
-            ['perl', 'pl', $dir . 'shBrushPerl.js'],
-            ['php', $dir . 'shBrushPhp.js'],
-            ['powershell', $dir . 'shBrushPowershell.js'],
-            ['text', 'plain', $dir . 'shBrushPlain.js'],
-            ['py', 'python', $dir . 'shBrushPython.js'],
-            ['ruby', 'rails', 'ror', 'rb', $dir . 'shBrushRuby.js'],
-            ['sass', 'scss', $dir . 'shBrushSass.js'],
-            ['scala', $dir . 'shBrushScala.js'],
-            ['sql', $dir . 'shBrushSql.js'],
-            ['vb', 'vbnet', $dir . 'shBrushVb.js'],
-            ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
-        ];
-        return (string) json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-    }
-
     private function initHighlighter(): void
     {
-        global $pth, $hjs, $bjs, $plugin_cf, $plugin_tx;
-
-        $hjs .= "<meta name=\"syntaxhighlighter.brushes\" content='{$this->getBrushes()}'>\n";
-
-        $pcf = $plugin_cf['syntaxhighlighter'];
-        $ptx = $plugin_tx['syntaxhighlighter'];
-        $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/';
-
-        foreach (['shCore', 'shAutoloader'] as $f) {
-            $fn = $dir . 'lib/scripts/' . $f . '.js';
-            $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>' . "\n";
-        }
-        foreach (['shCore', 'shTheme'] as $f) {
-            $fn = $dir . 'lib/styles/' . $f . $pcf['theme'] . '.css';
-            $hjs .= '<link rel="stylesheet" href="' . $fn . '" type="text/css">' . "\n";
-        }
-
-        $strings = [];
-        $keys = ['expand_source', 'help', 'alert', 'no_brush',
-            'brush_not_html_script'];
-        foreach ($keys as $key) {
-            $jskey = substr($key, 0, 1)
-                . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
-            $strings[$jskey] = $ptx[$key];
-        }
-        $strings = json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-
-        $hjs .= "<meta name=\"syntaxhighlighter.strings\" content='{$strings}'>\n";
-
-        $script = "{$pth["folder"]["plugins"]}syntaxhighlighter/syntaxhighlighter.min.js";
-        $hjs .= "<script type=\"text/javascript\" src=\"$script\"</script>\n";
+        (new MainController())->invoke();
     }
 
     private function renderInfo(): string
