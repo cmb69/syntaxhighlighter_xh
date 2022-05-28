@@ -68,34 +68,34 @@ class Plugin
         global $pth;
 
         $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/lib/scripts/';
-        $brushes = array(
-            array('applescript', $dir . 'shBrushAppleScript.js'),
-            array('actionscript3', 'as3', $dir . 'shBrushAS3.js'),
-            array('bash', 'shell', $dir . 'shBrushBash.js'),
-            array('coldfusion', 'cf', $dir . 'shBrushColdFusion.js'),
-            array('cpp', 'c', $dir . 'shBrushCpp.js'),
-            array('c#', 'c-sharp', 'csharp', $dir . 'shBrushCSharp.js'),
-            array('css', $dir . 'shBrushCss.js'),
-            array('delphi', 'pascal', 'pas', $dir . 'shBrushDelphi.js'),
-            array('diff', $dir . 'shBrushDiff.js'),
-            array('patch', $dir . 'shBrushPatch.js'),
-            array('erl', 'erlang', $dir . 'shBrushErlang.js'),
-            array('groovy', $dir . 'shBrushGroovy.js'),
-            array('java', $dir . 'shBrushJava.js'),
-            array('jfx', 'javafx', $dir . 'shBrushJavaFX.js'),
-            array('js', 'jscript', 'javascript', $dir . 'shBrushJScript.js'),
-            array('perl', 'pl', $dir . 'shBrushPerl.js'),
-            array('php', $dir . 'shBrushPhp.js'),
-            array('powershell', $dir . 'shBrushPowershell.js'),
-            array('text', 'plain', $dir . 'shBrushPlain.js'),
-            array('py', 'python', $dir . 'shBrushPython.js'),
-            array('ruby', 'rails', 'ror', 'rb', $dir . 'shBrushRuby.js'),
-            array('sass', 'scss', $dir . 'shBrushSass.js'),
-            array('scala', $dir . 'shBrushScala.js'),
-            array('sql', $dir . 'shBrushSql.js'),
-            array('vb', 'vbnet', $dir . 'shBrushVb.js'),
-            array('xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'),
-        );
+        $brushes = [
+            ['applescript', $dir . 'shBrushAppleScript.js'],
+            ['actionscript3', 'as3', $dir . 'shBrushAS3.js'],
+            ['bash', 'shell', $dir . 'shBrushBash.js'],
+            ['coldfusion', 'cf', $dir . 'shBrushColdFusion.js'],
+            ['cpp', 'c', $dir . 'shBrushCpp.js'],
+            ['c#', 'c-sharp', 'csharp', $dir . 'shBrushCSharp.js'],
+            ['css', $dir . 'shBrushCss.js'],
+            ['delphi', 'pascal', 'pas', $dir . 'shBrushDelphi.js'],
+            ['diff', $dir . 'shBrushDiff.js'],
+            ['patch', $dir . 'shBrushPatch.js'],
+            ['erl', 'erlang', $dir . 'shBrushErlang.js'],
+            ['groovy', $dir . 'shBrushGroovy.js'],
+            ['java', $dir . 'shBrushJava.js'],
+            ['jfx', 'javafx', $dir . 'shBrushJavaFX.js'],
+            ['js', 'jscript', 'javascript', $dir . 'shBrushJScript.js'],
+            ['perl', 'pl', $dir . 'shBrushPerl.js'],
+            ['php', $dir . 'shBrushPhp.js'],
+            ['powershell', $dir . 'shBrushPowershell.js'],
+            ['text', 'plain', $dir . 'shBrushPlain.js'],
+            ['py', 'python', $dir . 'shBrushPython.js'],
+            ['ruby', 'rails', 'ror', 'rb', $dir . 'shBrushRuby.js'],
+            ['sass', 'scss', $dir . 'shBrushSass.js'],
+            ['scala', $dir . 'shBrushScala.js'],
+            ['sql', $dir . 'shBrushSql.js'],
+            ['vb', 'vbnet', $dir . 'shBrushVb.js'],
+            ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
+        ];
         return implode(',', array_map('json_encode', $brushes));
     }
 
@@ -112,18 +112,18 @@ class Plugin
         $ptx = $plugin_tx['syntaxhighlighter'];
         $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/';
 
-        foreach (array('shCore', 'shAutoloader') as $f) {
+        foreach (['shCore', 'shAutoloader'] as $f) {
             $fn = $dir . 'lib/scripts/' . $f . '.js';
             $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>' . "\n";
         }
-        foreach (array('shCore', 'shTheme') as $f) {
+        foreach (['shCore', 'shTheme'] as $f) {
             $fn = $dir . 'lib/styles/' . $f . $pcf['theme'] . '.css';
             $hjs .= '<link rel="stylesheet" href="' . $fn . '" type="text/css">' . "\n";
         }
 
-        $strings = array();
-        $keys = array('expand_source', 'help', 'alert', 'no_brush',
-            'brush_not_html_script');
+        $strings = [];
+        $keys = ['expand_source', 'help', 'alert', 'no_brush',
+            'brush_not_html_script'];
         foreach ($keys as $key) {
             $jskey = substr($key, 0, 1)
                 . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
