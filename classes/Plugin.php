@@ -87,7 +87,7 @@ class Plugin
             ['vb', 'vbnet', $dir . 'shBrushVb.js'],
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
-        return json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
+        return (string) json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
     }
 
     private function initHighlighter(): void
