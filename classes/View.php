@@ -29,44 +29,11 @@ class View
     private $template;
 
     /**
-     * @var array<string,mixed>
-     */
-    private $data = array();
-
-    /**
      * @param string $template
      */
     public function __construct($template)
     {
         $this->template = $template;
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    public function __get($name)
-    {
-        return $this->data[$name];
-    }
-
-    /**
-     * @param string $name
-     * @return bool
-     */
-    public function __isset($name)
-    {
-        return isset($this->data[$name]);
-    }
-
-    /**
-     * @param string $name
-     * @param array<mixed> $args
-     * @return string
-     */
-    public function __call($name, array $args)
-    {
-        return $this->escape($this->data[$name]);
     }
 
     /**
@@ -109,7 +76,7 @@ class View
     {
         global $pth;
 
-        $this->data = $_data;
+        extract($_data);
         ob_start();
         include "{$pth['folder']['plugins']}syntaxhighlighter/views/{$this->template}.php";
         return (string) ob_get_clean();
