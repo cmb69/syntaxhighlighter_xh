@@ -1,3 +1,14 @@
+<?php
+
+namespace Syntaxhighlighter;
+
+/**
+ * @var View $this
+ * @var string $version
+ * @var array<SystemCheck> $checks
+ */
+?>
+
 <h1>Syntaxhighlighter <?=$this->escape($version)?></h1>
 <div class="syntaxhighlighter_syscheck">
     <h2><?=$this->text('syscheck_title')?></h2>
