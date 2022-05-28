@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015-2017 Christoph M. Becker
+ * Copyright 2015-2022 Christoph M. Becker
  *
  * This file is part of Syntaxhighlighter_XH.
  *
