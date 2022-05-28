@@ -117,7 +117,7 @@ class Plugin
             $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>' . "\n";
         }
         foreach (array('shCore', 'shTheme') as $f) {
-            $fn = $dir . '/lib/styles/' . $f . $pcf['theme'] . '.css';
+            $fn = $dir . 'lib/styles/' . $f . $pcf['theme'] . '.css';
             $hjs .= '<link rel="stylesheet" href="' . $fn . '" type="text/css">' . "\n";
         }
 
