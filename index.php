@@ -24,7 +24,7 @@
 /**
  * @return array<string>
  */
-function Syntaxhighlighter_themes()
+function Syntaxhighlighter_themes(): array
 {
     global $pth;
 

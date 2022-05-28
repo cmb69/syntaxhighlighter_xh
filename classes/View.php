@@ -30,20 +30,15 @@ class View
     private $lang;
 
     /**
-     * @param string $templateFolder
      * @param array<string,string> $lang
      */
-    public function __construct($templateFolder, array $lang)
+    public function __construct(string $templateFolder, array $lang)
     {
         $this->templateFolder = $templateFolder;
         $this->lang = $lang;
     }
 
-    /**
-     * @param string $key
-     * @return string
-     */
-    public function text($key)
+    public function text(string $key): string
     {
         $args = func_get_args();
         array_shift($args);
@@ -51,11 +46,9 @@ class View
     }
 
     /**
-     * @param string $_template
      * @param array<string,mixed> $_data
-     * @return string
      */
-    public function render($_template, array $_data)
+    public function render(string $_template, array $_data): string
     {
         extract($_data);
         ob_start();
@@ -65,9 +58,8 @@ class View
 
     /**
      * @param scalar|HtmlString $value
-     * @return string
      */
-    public function escape($value)
+    public function escape($value): string
     {
         if ($value instanceof HtmlString) {
             return $value;

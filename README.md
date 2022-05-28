@@ -20,7 +20,7 @@ available, which make editing even more convenient.
 ## Requirements
 
 Syntaxhighligher_XH is a plugin for CMSimple_XH ≥ 1.7.0.
-It requires PHP ≥ 5.4.0 with the JSON extension.
+It requires PHP ≥ 7.1.0 with the JSON extension.
 
 ## Download
 

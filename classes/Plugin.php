@@ -23,12 +23,9 @@ namespace Syntaxhighlighter;
 
 class Plugin
 {
-    const VERSION = '1.0';
+    private const VERSION = '1.0';
 
-    /**
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         global $edit;
 
@@ -43,10 +40,7 @@ class Plugin
         }
     }
 
-     /**
-     * @return void
-     */
-    private function handleAdministration()
+    private function handleAdministration(): void
     {
         global $o, $admin;
 
@@ -60,10 +54,7 @@ class Plugin
         }
     }
 
-    /**
-     * @return string
-     */
-    private function getBrushes()
+    private function getBrushes(): string
     {
         global $pth;
 
@@ -99,10 +90,7 @@ class Plugin
         return implode(',', array_map('json_encode', $brushes));
     }
 
-    /**
-     * @return void
-     */
-    private function initHighlighter()
+    private function initHighlighter(): void
     {
         global $pth, $hjs, $bjs, $plugin_cf, $plugin_tx;
 
@@ -150,10 +138,7 @@ class Plugin
 SCRIPT;
     }
 
-    /**
-     * @return string
-     */
-    private function renderInfo()
+    private function renderInfo(): string
     {
         global $pth, $plugin_tx;
 

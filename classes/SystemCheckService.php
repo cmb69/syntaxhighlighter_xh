@@ -44,10 +44,10 @@ class SystemCheckService
     /**
      * @return array<SystemCheck>
      */
-    public function getChecks()
+    public function getChecks(): array
     {
         return [
-            $this->checkPhpVersion('5.4.0'),
+            $this->checkPhpVersion('7.1.0'),
             $this->checkExtension('json'),
             $this->checkXhVersion('1.7.0'),
             $this->checkWritability("$this->pluginFolder/config/"),
@@ -56,11 +56,7 @@ class SystemCheckService
         ];
     }
 
-    /**
-     * @param string $version
-     * @return SystemCheck
-     */
-    private function checkPhpVersion($version)
+    private function checkPhpVersion(string $version): SystemCheck
     {
         $state = version_compare(PHP_VERSION, $version, 'ge') ? 'success' : 'fail';
         $label = sprintf($this->lang['syscheck_phpversion'], $version);
@@ -68,12 +64,7 @@ class SystemCheckService
         return new SystemCheck($state, $label, $stateLabel);
     }
 
-    /**
-     * @param string $extension
-     * @param bool $isMandatory
-     * @return SystemCheck
-     */
-    private function checkExtension($extension, $isMandatory = true)
+    private function checkExtension(string $extension, bool $isMandatory = true): SystemCheck
     {
         $state = extension_loaded($extension) ? 'success' : ($isMandatory ? 'fail' : 'warning');
         $label = sprintf($this->lang['syscheck_extension'], $extension);
@@ -81,11 +72,7 @@ class SystemCheckService
         return new SystemCheck($state, $label, $stateLabel);
     }
 
-    /**
-     * @param string $version
-     * @return SystemCheck
-     */
-    private function checkXhVersion($version)
+    private function checkXhVersion(string $version): SystemCheck
     {
         $state = version_compare(CMSIMPLE_XH_VERSION, "CMSimple_XH $version", 'ge') ? 'success' : 'fail';
         $label = sprintf($this->lang['syscheck_xhversion'], $version);
@@ -93,11 +80,7 @@ class SystemCheckService
         return new SystemCheck($state, $label, $stateLabel);
     }
 
-    /**
-     * @param string $folder
-     * @return SystemCheck
-     */
-    private function checkWritability($folder)
+    private function checkWritability(string $folder): SystemCheck
     {
         $state = is_writable($folder) ? 'success' : 'warning';
         $label = sprintf($this->lang['syscheck_writable'], $folder);

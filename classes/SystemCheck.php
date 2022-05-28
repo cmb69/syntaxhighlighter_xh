@@ -41,12 +41,7 @@ class SystemCheck
      */
     public $stateLabel;
 
-    /**
-     * @param string $state
-     * @param string $label
-     * @param string $stateLabel
-     */
-    public function __construct($state, $label, $stateLabel)
+    public function __construct(string $state, string $label, string $stateLabel)
     {
         $this->state = $state;
         $this->label = $label;
