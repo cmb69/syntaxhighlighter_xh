@@ -87,14 +87,14 @@ class Plugin
             ['vb', 'vbnet', $dir . 'shBrushVb.js'],
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
-        return implode(',', array_map('json_encode', $brushes));
+        return json_encode($brushes, JSON_HEX_APOS|JSON_UNESCAPED_SLASHES);
     }
 
     private function initHighlighter(): void
     {
         global $pth, $hjs, $bjs, $plugin_cf, $plugin_tx;
 
-        $brushes = $this->getBrushes();
+        $hjs .= "<meta name=\"syntaxhighlighter.brushes\" content='{$this->getBrushes()}'>\n";
 
         $pcf = $plugin_cf['syntaxhighlighter'];
         $ptx = $plugin_tx['syntaxhighlighter'];
@@ -117,25 +117,12 @@ class Plugin
                 . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
             $strings[$jskey] = $ptx[$key];
         }
-        $strings = json_encode($strings);
+        $strings = json_encode($strings, JSON_HEX_APOS|JSON_UNESCAPED_SLASHES);
 
-        $hjs .= <<<SCRIPT
-<script type="text/javascript">
-(function () {
-    if (!("addEventListener" in document)) {
-        return;
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-        var aboutDialog = SyntaxHighlighter.config.strings.aboutDialog;
-        SyntaxHighlighter.autoloader($brushes);
-        SyntaxHighlighter.config.strings = $strings;
-        SyntaxHighlighter.config.strings.aboutDialog = aboutDialog;
-        SyntaxHighlighter.all();
-    });
-}());
-</script>
+        $hjs .= "<meta name=\"syntaxhighlighter.strings\" content='{$strings}'>\n";
 
-SCRIPT;
+        $script = "{$pth["folder"]["plugins"]}syntaxhighlighter/syntaxhighlighter.min.js";
+        $hjs .= "<script type=\"text/javascript\" src=\"$script\"</script>\n";
     }
 
     private function renderInfo(): string

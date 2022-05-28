@@ -42,13 +42,13 @@
         <unzip file="export.zip" todir="export"/>
         <delete file="export.zip"/>
         <exec executable="uglifyjs" checkreturn="true">
+            <arg file="export/syntaxhighlighter.min.js"/>
             <arg file="export/editors/tinymce4/syntaxhl/plugin.min.js"/>
             <arg line="--comments /^!/"/>
             <arg value="--compress"/>
             <arg value="--mangle"/>
             <arg value="--toplevel"/>
-            <arg value="--output"/>
-            <arg file="export/editors/tinymce4/syntaxhl/plugin.min.js"/>
+            <arg value="--in-situ"/>
         </exec>
         <move todir="dist">
             <fileset dir="export">
