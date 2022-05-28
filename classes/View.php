@@ -78,16 +78,6 @@ class View
     }
 
     /**
-     * @return string
-     */
-    public function __toString()
-    {
-        ob_start();
-        $this->render();
-        return ob_get_clean();
-    }
-
-    /**
      * @param string $key
      * @return string
      */
@@ -119,13 +109,15 @@ class View
     }
 
     /**
-     * @return void
+     * @return string
      */
     public function render()
     {
         global $pth;
 
+        ob_start();
         include "{$pth['folder']['plugins']}syntaxhighlighter/views/{$this->template}.php";
+        return ob_get_clean();
     }
 
     /**

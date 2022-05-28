@@ -158,6 +158,6 @@ SCRIPT;
         $view = new View('info');
         $view->version = self::VERSION;
         $view->checks = (new SystemCheckService())->getChecks();
-        return (string) $view;
+        return $view->render();
     }
 }
