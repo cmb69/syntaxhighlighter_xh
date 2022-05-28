@@ -21,13 +21,20 @@
 
 (new Syntaxhighlighter\Plugin())->run();
 
+/**
+ * @return array<string>
+ */
 function Syntaxhighlighter_themes()
 {
     global $pth;
 
     $themeFolder = "{$pth['folder']['plugins']}syntaxhighlighter/lib/styles/";
     $themes = [];
-    foreach (scandir($themeFolder) as $filename) {
+    $filenames = scandir($themeFolder);
+    if ($filenames === false) {
+        return $themes;
+    }
+    foreach ($filenames as $filename) {
         if (preg_match('/shTheme(\w+)\.css/', $filename, $matches)) {
             $themes[] = $matches[1];
         }

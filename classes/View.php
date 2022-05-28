@@ -29,7 +29,7 @@ class View
     private $template;
 
     /**
-     * @var array
+     * @var array<string,mixed>
      */
     private $data = array();
 
@@ -61,6 +61,7 @@ class View
 
     /**
      * @param string $name
+     * @param array<mixed> $args
      * @return string
      */
     public function __call($name, array $args)
@@ -84,6 +85,7 @@ class View
     /**
      * @param string $key
      * @param int $count
+     * @return string
      */
     protected function plural($key, $count)
     {
@@ -100,6 +102,7 @@ class View
     }
 
     /**
+     * @param array<string,mixed> $_data
      * @return string
      */
     public function render(array $_data)
@@ -109,7 +112,7 @@ class View
         $this->data = $_data;
         ob_start();
         include "{$pth['folder']['plugins']}syntaxhighlighter/views/{$this->template}.php";
-        return ob_get_clean();
+        return (string) ob_get_clean();
     }
 
     /**
