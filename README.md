@@ -87,8 +87,8 @@ the settings.
 
 ## Limitations
 
-The syntax highlighting, line numbering etc. requires a reasonably modern
-browser (IE ≥ 9) with JavaScript enabled. In other environments the code
+The syntax highlighting, line numbering etc. requires a contemporary browser
+(e.g. IE is not supported) with JavaScript enabled. In other environments the code
 snippets are presented unenhanced.
 
 ## Troubleshooting
