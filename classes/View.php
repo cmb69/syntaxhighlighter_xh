@@ -24,19 +24,6 @@ namespace Syntaxhighlighter;
 class View
 {
     /**
-     * @var string
-     */
-    private $template;
-
-    /**
-     * @param string $template
-     */
-    public function __construct($template)
-    {
-        $this->template = $template;
-    }
-
-    /**
      * @param string $key
      * @return string
      */
@@ -50,16 +37,17 @@ class View
     }
 
     /**
+     * @param string $_template
      * @param array<string,mixed> $_data
      * @return string
      */
-    public function render(array $_data)
+    public function render($_template, array $_data)
     {
         global $pth;
 
         extract($_data);
         ob_start();
-        include "{$pth['folder']['plugins']}syntaxhighlighter/views/{$this->template}.php";
+        include "{$pth['folder']['plugins']}syntaxhighlighter/views/{$_template}.php";
         return (string) ob_get_clean();
     }
 
