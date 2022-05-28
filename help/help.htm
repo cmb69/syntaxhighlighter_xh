@@ -55,11 +55,6 @@
 <li>Set write permissions to the subdirectories <code>config/</code>, <code>css/</code> and <code>languages/</code>.</li>
 <li>Navigate to <code>Plugins</code> → <code>Syntaxhighlighter</code> in the back-end to check if all requirements are fulfilled.</li>
 </ol>
-<h3 id="for-tinymce-3">For TinyMCE (3)</h3>
-<ol type="1">
-<li>Copy <code>plugins/syntaxhighlighter/editors/tinymce/syntaxhl/</code> to <code>plugins/tinymce/tiny_mce/plugins/</code>.</li>
-<li>Edit your <a href="https://www.cmsimple-xh.org/wiki/doku.php/tinymce#customization"><code>init_*.js</code></a>: add the <code>syntaxhl</code> plugin to <code>plugins</code> and add the <code>syntaxhl</code> button to <code>theme_advanced_buttonsN</code> wherever you prefer.</li>
-</ol>
 <h3 id="for-tinymce4">For TinyMCE4</h3>
 <ol type="1">
 <li>Copy <code>plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/</code> to <code>plugins/tinymce4/tinymce/plugins/</code>.</li>
@@ -76,12 +71,10 @@
 <p>The look of Syntaxhighlighter_XH can be customized under <code>Stylesheet</code>.</p>
 <h2 id="usage">Usage</h2>
 <p>Add code you like to be presented with syntax highlighting to your pages by enclosing it in a <code>&lt;pre&gt;</code> element with a class as described in <a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/#parameters">the manual of Syntaxhighlighter</a></p>
-<p>For TinyMCE (3) it is even simpler: just press the <code>Insert code using Syntaxhighlighter</code> button, and enter the code and the desired settings. If you want to edit this code later, you have to choose <code>SyntaxHL - Edit</code> from the context menu.</p>
 <p>For TinyMCE 4 inserting and editing the code can be done by pressing the <code>Insert/Edit code sample</code> button, where you can edit the code and choose the desired language. Other settings have to be done manually in the HTML source code view.</p>
 <p>For CKEditor inserting and editing the code can be done by pressing the <code>Add or update a code snippet</code> button, where you can edit the code and the settings.</p>
 <h2 id="limitations">Limitations</h2>
 <p>The syntax highlighting, line numbering etc. requires a reasonably modern browser (IE ≥ 9) with JavaScript enabled. In other environments the code snippets are presented unenhanced.</p>
-<p>TinyMCE (3) may not work at all when CMSimple_XH is set to any other language than English. As a workaround just make a copy of <code>plugins/tinymce/tiny_mce/plugins/syntaxhl/langs/en.js</code> and rename it according to your language (e.g. <code>de.js</code> for German).</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>Report bugs and ask for support either on <a href="https://github.com/cmb69/syntaxhighlighter_xh/issues">Github</a> or in the <a href="https://cmsimpleforum.com/">CMSimple_XH Forum</a>.</p>
 <h2 id="license">License</h2>
@@ -92,7 +85,7 @@
 <h2 id="credits">Credits</h2>
 <p>This plugin was inspired by <code>pmolik</code>.</p>
 <p>Syntaxhighlighter_XH is powered by <a href="https://github.com/syntaxhighlighter/syntaxhighlighter">Alex Gorbatchev’s Syntaxhighlighter</a>; many thanks for releasing this great tool under LGPL.</p>
-<p>The <a href="https://github.com/RichGuk/syntaxhl">TinyMCE (3) plugin</a> is written by Richard Grundy. The TinyMCE 4 plugins is based on the <a href="https://www.tinymce.com/docs/plugins/codesample/">codesample plugin</a> by Ephox Corp. The <a href="https://github.com/dbrain/ckeditor-syntaxhighlight">CKEditor plugin</a> is written by Daniel Brain. Many thanks for releasing these plugins under LGPL.</p>
+<p>The TinyMCE 4 plugins is based on the <a href="https://www.tinymce.com/docs/plugins/codesample/">codesample plugin</a> by Ephox Corp. The <a href="https://github.com/dbrain/ckeditor-syntaxhighlight">CKEditor plugin</a> is written by Daniel Brain. Many thanks for releasing these plugins under LGPL.</p>
 <p>The plugin logo has been designed by <a href="https://www.everaldo.com/about">YellowIcon</a>. Many thanks for publishing this icon under GPL.</p>
 <p>Many thanks to the community at the <a href="https://www.cmsimpleforum.com/">CMSimple_XH-Forum</a> for tips, suggestions and testing.</p>
 <p>And last but not least many thanks to <a href="httsp://www.harteg.dk">Peter Harteg</a>, the “father” of CMSimple, and all developers of <a href="https://www.cmsimple-xh.org">CMSimple_XH</a> without whom this amazing CMS would not exist.</p>

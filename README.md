@@ -42,14 +42,6 @@ for further details.
 1.  Navigate to `Plugins` → `Syntaxhighlighter` in the back-end
     to check if all requirements are fulfilled.
 
-### For TinyMCE (3)
-
-1. Copy `plugins/syntaxhighlighter/editors/tinymce/syntaxhl/` to
-   `plugins/tinymce/tiny_mce/plugins/`.
-1. Edit your [`init_*.js`](https://www.cmsimple-xh.org/wiki/doku.php/tinymce#customization):
-   add the `syntaxhl` plugin to `plugins` and add the `syntaxhl` button
-   to `theme_advanced_buttonsN` wherever you prefer.
-
 ### For TinyMCE4
 
 1. Copy `plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/` to
@@ -84,10 +76,6 @@ Add code you like to be presented with syntax highlighting to your pages by
 enclosing it in a `<pre>` element with a class as described in
 [the manual of Syntaxhighlighter](http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/#parameters)
 
-For TinyMCE (3) it is even simpler: just press the `Insert code using Syntaxhighlighter`
-button, and enter the code and the desired settings. If you want to edit this
-code later, you have to choose `SyntaxHL - Edit` from the context menu.
-
 For TinyMCE 4 inserting and editing the code can be done by pressing the
 `Insert/Edit code sample` button, where you can edit the code and
 choose the desired language. Other settings have to be done manually in the
@@ -102,11 +90,6 @@ the settings.
 The syntax highlighting, line numbering etc. requires a reasonably modern
 browser (IE ≥ 9) with JavaScript enabled. In other environments the code
 snippets are presented unenhanced.
-
-TinyMCE (3) may not work at all when CMSimple_XH is set to any other
-language than English. As a workaround just make a copy of
-`plugins/tinymce/tiny_mce/plugins/syntaxhl/langs/en.js` and
-rename it according to your language (e.g. `de.js` for German).
 
 ## Troubleshooting
 
@@ -139,8 +122,6 @@ Syntaxhighlighter_XH is powered by
 [Alex Gorbatchev’s Syntaxhighlighter](https://github.com/syntaxhighlighter/syntaxhighlighter);
 many thanks for releasing this great tool under LGPL.
 
-The [TinyMCE (3) plugin](https://github.com/RichGuk/syntaxhl) is
-written by Richard Grundy.
 The TinyMCE 4 plugins is based on the
 [codesample plugin](https://www.tinymce.com/docs/plugins/codesample/) by Ephox Corp.
 The [CKEditor plugin](https://github.com/dbrain/ckeditor-syntaxhighlight)
