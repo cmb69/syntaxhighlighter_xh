@@ -155,7 +155,9 @@ SCRIPT;
      */
     private function renderInfo()
     {
-        $view = new View();
+        global $pth, $plugin_tx;
+
+        $view = new View("{$pth['folder']['plugins']}syntaxhighlighter/views/", $plugin_tx["syntaxhighlighter"]);
         return $view->render('info', [
             "version" => self::VERSION,
             "checks" => (new SystemCheckService())->getChecks(),

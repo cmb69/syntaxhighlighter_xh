@@ -23,17 +23,31 @@ namespace Syntaxhighlighter;
 
 class View
 {
+    /** @var string */
+    private $templateFolder;
+
+    /** @var array<string,string> */
+    private $lang;
+
+    /**
+     * @param string $templateFolder
+     * @param array<string,string> $lang
+     */
+    public function __construct($templateFolder, array $lang)
+    {
+        $this->templateFolder = $templateFolder;
+        $this->lang = $lang;
+    }
+
     /**
      * @param string $key
      * @return string
      */
     protected function text($key)
     {
-        global $plugin_tx;
-
         $args = func_get_args();
         array_shift($args);
-        return $this->escape(vsprintf($plugin_tx['syntaxhighlighter'][$key], $args));
+        return $this->escape(vsprintf($this->lang[$key], $args));
     }
 
     /**
@@ -43,11 +57,9 @@ class View
      */
     public function render($_template, array $_data)
     {
-        global $pth;
-
         extract($_data);
         ob_start();
-        include "{$pth['folder']['plugins']}syntaxhighlighter/views/{$_template}.php";
+        include "{$this->templateFolder}{$_template}.php";
         return (string) ob_get_clean();
     }
 
