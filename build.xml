@@ -52,9 +52,13 @@
         </exec>
         <move todir="dist">
             <fileset dir="export">
+                <exclude name=".github/**"/>
+                <exclude name="help/template.htm"/>
+                <exclude name="README*.md"/>
                 <exclude name="build.xml"/>
                 <exclude name="composer.*"/>
-                <exclude name="README*.md"/>
+                <exclude name="phpstan.*"/>
+                <exclude name="teplad.xml"/>
             </fileset>
         </move>
         <delete dir="export"/>
