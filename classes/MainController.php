@@ -23,22 +23,38 @@ namespace Syntaxhighlighter;
 
 class MainController
 {
+    /** @var string */
+    private $pluginFolder;
+
+    /** @var array<string,string> */
+    private $conf;
+
+    /** @var array<string,string> */
+    private $lang;
+
+    /**
+     * @param array<string,string> $conf
+     * @param array<string,string> $lang
+     */
+    public function __construct(string $pluginFolder, array $conf, array $lang)
+    {
+        $this->pluginFolder = $pluginFolder;
+        $this->conf = $conf;
+        $this->lang = $lang;
+    }
+
     public function invoke(): void
     {
-        global $pth, $hjs, $bjs, $plugin_cf, $plugin_tx;
+        global $hjs, $bjs;
 
         $hjs .= "<meta name=\"syntaxhighlighter.brushes\" content='{$this->getBrushes()}'>\n";
 
-        $pcf = $plugin_cf['syntaxhighlighter'];
-        $ptx = $plugin_tx['syntaxhighlighter'];
-        $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/';
-
         foreach (['shCore', 'shAutoloader'] as $f) {
-            $fn = $dir . 'lib/scripts/' . $f . '.js';
+            $fn = $this->pluginFolder . 'lib/scripts/' . $f . '.js';
             $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>' . "\n";
         }
         foreach (['shCore', 'shTheme'] as $f) {
-            $fn = $dir . 'lib/styles/' . $f . $pcf['theme'] . '.css';
+            $fn = $this->pluginFolder . 'lib/styles/' . $f . $this->conf['theme'] . '.css';
             $hjs .= '<link rel="stylesheet" href="' . $fn . '" type="text/css">' . "\n";
         }
 
@@ -48,21 +64,19 @@ class MainController
         foreach ($keys as $key) {
             $jskey = substr($key, 0, 1)
                 . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
-            $strings[$jskey] = $ptx[$key];
+            $strings[$jskey] = $this->lang[$key];
         }
         $strings = json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
 
         $hjs .= "<meta name=\"syntaxhighlighter.strings\" content='{$strings}'>\n";
 
-        $script = "{$pth["folder"]["plugins"]}syntaxhighlighter/syntaxhighlighter.min.js";
+        $script = "{$this->pluginFolder}syntaxhighlighter.min.js";
         $hjs .= "<script type=\"text/javascript\" src=\"$script\"</script>\n";
     }
 
     private function getBrushes(): string
     {
-        global $pth;
-
-        $dir = $pth['folder']['plugins'] . 'syntaxhighlighter/lib/scripts/';
+        $dir = $this->pluginFolder . 'lib/scripts/';
         $brushes = [
             ['applescript', $dir . 'shBrushAppleScript.js'],
             ['actionscript3', 'as3', $dir . 'shBrushAS3.js'],

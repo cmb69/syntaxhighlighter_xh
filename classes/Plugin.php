@@ -56,7 +56,14 @@ class Plugin
 
     private function initHighlighter(): void
     {
-        (new MainController())->invoke();
+        global $pth, $plugin_cf, $plugin_tx;
+
+        $controller = new MainController(
+            "{$pth["folder"]["plugins"]}syntaxhighlighter/",
+            $plugin_cf["syntaxhighlighter"],
+            $plugin_tx["syntaxhighlighter"]
+        );
+        $controller->invoke();
     }
 
     private function renderInfo(): string
