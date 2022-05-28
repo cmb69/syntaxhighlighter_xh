@@ -35,7 +35,7 @@ class Plugin
         if (!$edit) {
             $this->initHighlighter();
         }
-        if (XH_ADM) {
+        if (XH_ADM) { // @phpstan-ignore-line
             XH_registerStandardPluginMenuItems(false);
             if (XH_wantsPluginAdministration('syntaxhighlighter')) {
                 $this->handleAdministration();
@@ -48,7 +48,7 @@ class Plugin
      */
     private function handleAdministration()
     {
-        global $o, $admin, $action;
+        global $o, $admin;
 
         $o .= print_plugin_admin('off');
         switch ($admin) {
@@ -56,7 +56,7 @@ class Plugin
                 $o .= $this->renderInfo();
                 break;
             default:
-                $o .= plugin_admin_common($action, $admin, 'syntaxhighlighter');
+                $o .= plugin_admin_common();
         }
     }
 
