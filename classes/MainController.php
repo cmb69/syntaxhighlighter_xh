@@ -59,15 +59,10 @@ class MainController
         }
 
         $strings = [];
-        $keys = ['expand_source', 'help', 'alert', 'no_brush',
-            'brush_not_html_script'];
-        foreach ($keys as $key) {
-            $jskey = substr($key, 0, 1)
-                . substr(implode('', array_map('ucfirst', explode('_', $key))), 1);
-            $strings[$jskey] = $this->lang[$key];
+        foreach (['expand_source', 'help', 'alert', 'no_brush', 'brush_not_html_script'] as $key) {
+            $strings[$this->camelCase($key)] = $this->lang[$key];
         }
         $strings = json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-
         $hjs .= "<meta name=\"syntaxhighlighter.strings\" content='{$strings}'>\n";
 
         $script = "{$this->pluginFolder}syntaxhighlighter.min.js";
@@ -106,5 +101,10 @@ class MainController
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
         return (string) json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
+    }
+
+    private function camelCase(string $string): string
+    {
+        return lcfirst(implode('', array_map('ucfirst', explode('_', $string))));
     }
 }
