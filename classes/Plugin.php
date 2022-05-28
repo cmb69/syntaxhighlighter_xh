@@ -156,8 +156,9 @@ SCRIPT;
     private function renderInfo()
     {
         $view = new View('info');
-        $view->version = self::VERSION;
-        $view->checks = (new SystemCheckService())->getChecks();
-        return $view->render();
+        return $view->render([
+            "version" => self::VERSION,
+            "checks" => (new SystemCheckService())->getChecks(),
+        ]);
     }
 }
