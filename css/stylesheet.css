@@ -9,13 +9,4 @@ pre {background: #fff; color: #444; padding: 0.2em; border: 1px solid #ccc}
 /**
  * Back-end
  */
-.syntaxhighlighter_logo {
-    float: left;
-    width: 128px;
-    height: 128px;
-    margin: 0 1.5em 0.5em 0;
-}
-.syntaxhighlighter_license {
-    text-align: justify;
-}
 .syntaxhighlighter_systemcheck {}

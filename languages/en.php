@@ -16,6 +16,4 @@ $plugin_tx['syntaxhighlighter']['syscheck_warning']="warning";
 $plugin_tx['syntaxhighlighter']['syscheck_writable']="'%s' is writable";
 $plugin_tx['syntaxhighlighter']['syscheck_xhversion']="CMSimple_XH version ≥ %s";
 
-$plugin_tx['syntaxhighlighter']['alt_logo']="Marker Pen";
-
 $plugin_tx['syntaxhighlighter']['cf_theme']="The syntax highlighting theme.";

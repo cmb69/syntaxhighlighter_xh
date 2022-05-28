@@ -155,10 +155,7 @@ SCRIPT;
      */
     private function renderInfo()
     {
-        global $pth;
-
         $view = new View('info');
-        $view->logo = "{$pth['folder']['plugins']}syntaxhighlighter/syntaxhighlighter.png";
         $view->version = self::VERSION;
         $view->checks = (new SystemCheckService())->getChecks();
         return (string) $view;
