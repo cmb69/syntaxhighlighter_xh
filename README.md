@@ -44,11 +44,9 @@ for further details.
 
 ### For TinyMCE4
 
-1. Copy `plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/` to
-   `plugins/tinymce4/tinymce/plugins/`.
-1. Edit your [`init_*.js`](https://www.cmsimple-xh.org/wiki/doku.php/tinymce#customization):
-   add the `syntaxhl` plugin to `plugins` and add the `syntaxhl` button to
-   `toolbarN` wherever you prefer.
+1. Add `"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js"`
+   to `external_plugins`. 
+1. Add the `syntaxhl` button to `toolbarN` wherever you prefer.
 
 ### For CKEditor
 
