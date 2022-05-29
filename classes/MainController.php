@@ -46,21 +46,13 @@ class MainController
     public function invoke(): void
     {
         $this->addMeta("syntaxhighlighter.brushes", $this->getBrushes());
-
         foreach (['shCore', 'shAutoloader'] as $f) {
             $this->addScript("{$this->pluginFolder}lib/scripts/{$f}.js");
         }
         foreach (['shCore', 'shTheme'] as $f) {
             $this->addStylesheet("{$this->pluginFolder}lib/styles/{$f}{$this->conf['theme']}.css");
         }
-
-        $strings = [];
-        foreach (['expand_source', 'help', 'alert', 'no_brush', 'brush_not_html_script'] as $key) {
-            $strings[$this->camelCase($key)] = $this->lang[$key];
-        }
-        $strings = (string) json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-        $this->addMeta("syntaxhighlighter.strings", $strings);
-
+        $this->addMeta("syntaxhighlighter.strings", $this->getStrings());
         $this->addScript("{$this->pluginFolder}syntaxhighlighter.min.js");
     }
 
@@ -117,6 +109,15 @@ class MainController
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
         return (string) json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
+    }
+
+    private function getStrings(): string
+    {
+        $strings = [];
+        foreach (['expand_source', 'help', 'alert', 'no_brush', 'brush_not_html_script'] as $key) {
+            $strings[$this->camelCase($key)] = $this->lang[$key];
+        }
+        return (string) json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
     }
 
     private function camelCase(string $string): string
