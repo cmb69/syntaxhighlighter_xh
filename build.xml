@@ -44,6 +44,7 @@
         <exec executable="uglifyjs" checkreturn="true">
             <arg file="export/syntaxhighlighter.min.js"/>
             <arg file="export/editors/tinymce4/syntaxhl/plugin.min.js"/>
+            <arg file="export/editors/tinymce5/syntaxhl/plugin.min.js"/>
             <arg line="--comments /^!/"/>
             <arg value="--compress"/>
             <arg value="--mangle"/>

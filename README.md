@@ -48,6 +48,12 @@ for further details.
    to `external_plugins`. 
 1. Add the `syntaxhl` button to `toolbarN` wherever you prefer.
 
+### For TinyMCE5
+
+1. Add `"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js"`
+   to `external_plugins`. 
+1. Add the `syntaxhl` button to `toolbar` wherever you prefer.
+
 ### For CKEditor
 
 1. Copy `plugins/syntaxhighlighter/editors/ckeditor/syntaxhighlight/` to
@@ -120,7 +126,7 @@ Syntaxhighlighter_XH is powered by
 [Alex Gorbatchev’s Syntaxhighlighter](https://github.com/syntaxhighlighter/syntaxhighlighter);
 many thanks for releasing this great tool under LGPL.
 
-The TinyMCE 4 plugins is based on the
+The TinyMCE 4 and 5 plugins are based on the
 [codesample plugin](https://www.tinymce.com/docs/plugins/codesample/) by Ephox Corp.
 The [CKEditor plugin](https://github.com/dbrain/ckeditor-syntaxhighlight)
 is written by Daniel Brain.
