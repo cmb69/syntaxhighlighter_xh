@@ -80,7 +80,7 @@ Add code you like to be presented with syntax highlighting to your pages by
 enclosing it in a `<pre>` element with a class as described in
 [the manual of Syntaxhighlighter](http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/#parameters)
 
-For TinyMCE 4 inserting and editing the code can be done by pressing the
+For TinyMCE 4 and 5 inserting and editing the code can be done by pressing the
 `Insert/Edit code sample` button, where you can edit the code and
 choose the desired language. Other settings have to be done manually in the
 HTML source code view.
