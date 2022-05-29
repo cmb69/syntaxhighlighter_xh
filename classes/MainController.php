@@ -45,21 +45,25 @@ class MainController
 
     public function invoke(): void
     {
-        $this->addMeta("syntaxhighlighter.brushes", $this->getBrushes());
+        $this->addMetaJson("syntaxhighlighter.brushes", $this->getBrushes());
         foreach (['shCore', 'shAutoloader'] as $f) {
             $this->addScript("{$this->pluginFolder}lib/scripts/{$f}.js");
         }
         foreach (['shCore', 'shTheme'] as $f) {
             $this->addStylesheet("{$this->pluginFolder}lib/styles/{$f}{$this->conf['theme']}.css");
         }
-        $this->addMeta("syntaxhighlighter.strings", $this->getStrings());
+        $this->addMetaJson("syntaxhighlighter.strings", $this->getStrings());
         $this->addScript("{$this->pluginFolder}syntaxhighlighter.min.js");
     }
 
-    private function addMeta(string $name, string $content): void
+    /**
+     * @param mixed $value
+     */
+    private function addMetaJson(string $name, $value): void
     {
         global $hjs;
 
+        $content = (string) json_encode($value, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
         $hjs .= "<meta name=\"{$name}\" content='{$content}'>\n";
     }
 
@@ -77,10 +81,13 @@ class MainController
         $hjs .= "<script type=\"text/javascript\" src=\"{$filename}\"></script>\n";
     }
 
-    private function getBrushes(): string
+    /**
+     * @return mixed
+     */
+    private function getBrushes()
     {
         $dir = $this->pluginFolder . 'lib/scripts/';
-        $brushes = [
+        return [
             ['applescript', $dir . 'shBrushAppleScript.js'],
             ['actionscript3', 'as3', $dir . 'shBrushAS3.js'],
             ['bash', 'shell', $dir . 'shBrushBash.js'],
@@ -108,16 +115,18 @@ class MainController
             ['vb', 'vbnet', $dir . 'shBrushVb.js'],
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
-        return (string) json_encode($brushes, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
     }
 
-    private function getStrings(): string
+    /**
+     * @return mixed
+     */
+    private function getStrings()
     {
         $strings = [];
         foreach (['expand_source', 'help', 'alert', 'no_brush', 'brush_not_html_script'] as $key) {
             $strings[$this->camelCase($key)] = $this->lang[$key];
         }
-        return (string) json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
+        return $strings;
     }
 
     private function camelCase(string $string): string
