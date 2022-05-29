@@ -45,28 +45,44 @@ class MainController
 
     public function invoke(): void
     {
-        global $hjs, $bjs;
-
-        $hjs .= "<meta name=\"syntaxhighlighter.brushes\" content='{$this->getBrushes()}'>\n";
+        $this->addMeta("syntaxhighlighter.brushes", $this->getBrushes());
 
         foreach (['shCore', 'shAutoloader'] as $f) {
-            $fn = $this->pluginFolder . 'lib/scripts/' . $f . '.js';
-            $bjs .= '<script type="text/javascript" src="' . $fn . '"></script>' . "\n";
+            $this->addScript("{$this->pluginFolder}lib/scripts/{$f}.js");
         }
         foreach (['shCore', 'shTheme'] as $f) {
-            $fn = $this->pluginFolder . 'lib/styles/' . $f . $this->conf['theme'] . '.css';
-            $hjs .= '<link rel="stylesheet" href="' . $fn . '" type="text/css">' . "\n";
+            $this->addStylesheet("{$this->pluginFolder}lib/styles/{$f}{$this->conf['theme']}.css");
         }
 
         $strings = [];
         foreach (['expand_source', 'help', 'alert', 'no_brush', 'brush_not_html_script'] as $key) {
             $strings[$this->camelCase($key)] = $this->lang[$key];
         }
-        $strings = json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-        $hjs .= "<meta name=\"syntaxhighlighter.strings\" content='{$strings}'>\n";
+        $strings = (string) json_encode($strings, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
+        $this->addMeta("syntaxhighlighter.strings", $strings);
 
-        $script = "{$this->pluginFolder}syntaxhighlighter.min.js";
-        $hjs .= "<script type=\"text/javascript\" src=\"$script\"</script>\n";
+        $this->addScript("{$this->pluginFolder}syntaxhighlighter.min.js");
+    }
+
+    private function addMeta(string $name, string $content): void
+    {
+        global $hjs;
+
+        $hjs .= "<meta name=\"{$name}\" content='{$content}'>\n";
+    }
+
+    private function addStylesheet(string $filename): void
+    {
+        global $hjs;
+
+        $hjs .= "<link rel=\"stylesheet\" href=\"{$filename}\" type=\"text/css\">\n";
+    }
+
+    private function addScript(string $filename): void
+    {
+        global $hjs;
+
+        $hjs .= "<script type=\"text/javascript\" src=\"{$filename}\"></script>\n";
     }
 
     private function getBrushes(): string
