@@ -53,7 +53,7 @@ class PluginInfo
     }
 
     /**
-     * @return array<SystemCheck>
+     * @return list<array{state:string,label:string,stateLabel:string}>
      */
     private function getChecks(): array
     {
@@ -67,35 +67,47 @@ class PluginInfo
         ];
     }
 
-    private function checkPhpVersion(string $version): SystemCheck
+    /** @return array{state:string,label:string,stateLabel:string} */
+    private function checkPhpVersion(string $version): array
     {
         $state = $this->systemChecker->checkVersion(PHP_VERSION, $version) ? 'success' : 'fail';
-        $label = sprintf($this->lang['syscheck_phpversion'], $version);
-        $stateLabel = $this->lang["syscheck_$state"];
-        return new SystemCheck($state, $label, $stateLabel);
+        return [
+            'state' => $state,
+            'label' => sprintf($this->lang['syscheck_phpversion'], $version),
+            'stateLabel' => $this->lang["syscheck_$state"],
+        ];
     }
 
-    private function checkExtension(string $extension): SystemCheck
+    /** @return array{state:string,label:string,stateLabel:string} */
+    private function checkExtension(string $extension): array
     {
         $state = $this->systemChecker->checkExtension($extension) ? 'success' : 'fail';
-        $label = sprintf($this->lang['syscheck_extension'], $extension);
-        $stateLabel = $this->lang["syscheck_$state"];
-        return new SystemCheck($state, $label, $stateLabel);
+        return [
+            'state' => $state,
+            'label' => sprintf($this->lang['syscheck_extension'], $extension),
+            'stateLabel' => $this->lang["syscheck_$state"],
+        ];
     }
 
-    private function checkXhVersion(string $version): SystemCheck
+    /** @return array{state:string,label:string,stateLabel:string} */
+    private function checkXhVersion(string $version): array
     {
         $state = $this->systemChecker->checkVersion(CMSIMPLE_XH_VERSION, "CMSimple_XH $version") ? 'success' : 'fail';
-        $label = sprintf($this->lang['syscheck_xhversion'], $version);
-        $stateLabel = $this->lang["syscheck_$state"];
-        return new SystemCheck($state, $label, $stateLabel);
+        return [
+            'state' => $state,
+            'label' => sprintf($this->lang['syscheck_xhversion'], $version),
+            'stateLabel' => $this->lang["syscheck_$state"]
+        ];
     }
 
-    private function checkWritability(string $folder): SystemCheck
+    /** @return array{state:string,label:string,stateLabel:string} */
+    private function checkWritability(string $folder): array
     {
         $state = $this->systemChecker->checkWritability($folder) ? 'success' : 'warning';
-        $label = sprintf($this->lang['syscheck_writable'], $folder);
-        $stateLabel = $this->lang["syscheck_$state"];
-        return new SystemCheck($state, $label, $stateLabel);
+        return [
+            'state' => $state,
+            'label' => sprintf($this->lang['syscheck_writable'], $folder),
+            'stateLabel' => $this->lang["syscheck_$state"]
+        ];
     }
 }
