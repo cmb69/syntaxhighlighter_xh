@@ -46,8 +46,6 @@ class PluginInfo
 
     public function __invoke(): string
     {
-        global $pth, $plugin_tx;
-
         $systemCheckService = new SystemCheckService(
             $this->pluginFolder,
             $this->lang,
