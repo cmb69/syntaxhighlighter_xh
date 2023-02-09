@@ -21,36 +21,28 @@
 
 namespace Syntaxhighlighter;
 
-class Plugin
+class Dic
 {
-    public const VERSION = '1.0';
-
-    public function run(): void
+    public static function makeInitHighlighter(): InitHighlighter
     {
-        global $edit;
+        global $pth, $plugin_cf, $plugin_tx;
 
-        if (!$edit) {
-            Dic::makeInitHighlighter()();
-        }
-        if (XH_ADM) { // @phpstan-ignore-line
-            XH_registerStandardPluginMenuItems(false);
-            if (XH_wantsPluginAdministration('syntaxhighlighter')) {
-                $this->handleAdministration();
-            }
-        }
+        return new InitHighlighter(
+            "{$pth["folder"]["plugins"]}syntaxhighlighter/",
+            $plugin_cf["syntaxhighlighter"],
+            $plugin_tx["syntaxhighlighter"]
+        );
     }
 
-    private function handleAdministration(): void
+    public static function makePluginInfo(): PluginInfo
     {
-        global $o, $admin;
+        global $pth, $plugin_tx;
 
-        $o .= print_plugin_admin('off');
-        switch ($admin) {
-            case '':
-                $o .= Dic::makePluginInfo()();
-                break;
-            default:
-                $o .= plugin_admin_common();
-        }
+        return new PluginInfo(
+            "{$pth['folder']['plugins']}syntaxhighlighter/",
+            $plugin_tx['syntaxhighlighter'],
+            new SystemChecker(),
+            new View("{$pth['folder']['plugins']}syntaxhighlighter/views/", $plugin_tx['syntaxhighlighter'])
+        );
     }
 }
