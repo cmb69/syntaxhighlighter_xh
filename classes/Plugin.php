@@ -70,15 +70,12 @@ class Plugin
     {
         global $pth, $plugin_tx;
 
-        $view = new View("{$pth['folder']['plugins']}syntaxhighlighter/views/", $plugin_tx["syntaxhighlighter"]);
-        $systemCheckService = new SystemCheckService(
+        $pluginInfo = new PluginInfo(
             "{$pth['folder']['plugins']}syntaxhighlighter/",
             $plugin_tx['syntaxhighlighter'],
-            new SystemChecker()
+            new SystemChecker(),
+            new View("{$pth['folder']['plugins']}syntaxhighlighter/views/", $plugin_tx['syntaxhighlighter'])
         );
-        return $view->render('info', [
-            "version" => self::VERSION,
-            "checks" => $systemCheckService->getChecks(),
-        ]);
+        return $pluginInfo();
     }
 }
