@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntaxhighlighter;
+use Syntaxhighlighter\View;
 
 /**
  * @var View $this
