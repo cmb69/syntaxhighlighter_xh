@@ -57,14 +57,10 @@ class View
     }
 
     /**
-     * @param scalar|HtmlString $value
+     * @param scalar $value
      */
     public function escape($value): string
     {
-        if ($value instanceof HtmlString) {
-            return $value;
-        } else {
-            return XH_hsc((string) $value);
-        }
+        return XH_hsc((string) $value);
     }
 }
