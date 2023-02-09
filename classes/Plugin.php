@@ -71,9 +71,13 @@ class Plugin
         global $pth, $plugin_tx;
 
         $view = new View("{$pth['folder']['plugins']}syntaxhighlighter/views/", $plugin_tx["syntaxhighlighter"]);
+        $systemCheckService = new SystemCheckService(
+            "{$pth['folder']['plugins']}syntaxhighlighter/",
+            $plugin_tx['syntaxhighlighter']
+        );
         return $view->render('info', [
             "version" => self::VERSION,
-            "checks" => (new SystemCheckService())->getChecks(),
+            "checks" => $systemCheckService->getChecks(),
         ]);
     }
 }

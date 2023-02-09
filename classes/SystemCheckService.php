@@ -33,12 +33,11 @@ class SystemCheckService
      */
     private $lang;
 
-    public function __construct()
+    /** @param array<string,string> $lang */
+    public function __construct(string $pluginFolder, array $lang)
     {
-        global $pth, $plugin_tx;
-
-        $this->pluginFolder = "{$pth['folder']['plugins']}syntaxhighlighter";
-        $this->lang = $plugin_tx['syntaxhighlighter'];
+        $this->pluginFolder = $pluginFolder;
+        $this->lang = $lang;
     }
 
     /**
@@ -50,9 +49,9 @@ class SystemCheckService
             $this->checkPhpVersion('7.1.0'),
             $this->checkExtension('json'),
             $this->checkXhVersion('1.7.0'),
-            $this->checkWritability("$this->pluginFolder/config/"),
-            $this->checkWritability("$this->pluginFolder/css/"),
-            $this->checkWritability("$this->pluginFolder/languages/")
+            $this->checkWritability("{$this->pluginFolder}config/"),
+            $this->checkWritability("{$this->pluginFolder}css/"),
+            $this->checkWritability("{$this->pluginFolder}languages/")
         ];
     }
 
