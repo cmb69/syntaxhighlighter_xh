@@ -27,5 +27,4 @@ require_once "./classes/Plugin.php";
 require_once "./classes/PluginInfo.php";
 require_once "./classes/SystemCheck.php";
 require_once "./classes/SystemChecker.php";
-require_once "./classes/SystemCheckService.php";
 require_once "./classes/View.php";
