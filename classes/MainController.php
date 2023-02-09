@@ -43,7 +43,7 @@ class MainController
         $this->lang = $lang;
     }
 
-    public function invoke(): void
+    public function __invoke(): void
     {
         $this->addMetaJson("syntaxhighlighter.brushes", $this->getBrushes());
         foreach (['shCore', 'shAutoloader'] as $f) {

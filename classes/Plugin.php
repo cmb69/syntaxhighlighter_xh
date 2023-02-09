@@ -63,7 +63,7 @@ class Plugin
             $plugin_cf["syntaxhighlighter"],
             $plugin_tx["syntaxhighlighter"]
         );
-        $controller->invoke();
+        $controller();
     }
 
     private function renderInfo(): string
