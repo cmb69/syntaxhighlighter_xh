@@ -75,9 +75,9 @@ class PluginInfo
         return new SystemCheck($state, $label, $stateLabel);
     }
 
-    private function checkExtension(string $extension, bool $isMandatory = true): SystemCheck
+    private function checkExtension(string $extension): SystemCheck
     {
-        $state = $this->systemChecker->checkExtension($extension) ? 'success' : ($isMandatory ? 'fail' : 'warning');
+        $state = $this->systemChecker->checkExtension($extension) ? 'success' : 'fail';
         $label = sprintf($this->lang['syscheck_extension'], $extension);
         $stateLabel = $this->lang["syscheck_$state"];
         return new SystemCheck($state, $label, $stateLabel);
