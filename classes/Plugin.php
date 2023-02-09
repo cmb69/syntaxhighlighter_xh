@@ -23,7 +23,7 @@ namespace Syntaxhighlighter;
 
 class Plugin
 {
-    private const VERSION = '1.0';
+    public const VERSION = '1.0';
 
     public function run(): void
     {
