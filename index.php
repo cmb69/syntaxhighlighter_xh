@@ -19,7 +19,9 @@
  * along with Syntaxhighlighter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-(new Syntaxhighlighter\Plugin())->run();
+use Syntaxhighlighter\Dic;
+
+const SYNTAXHIGHLIGHTER_VERSION = "1.0";
 
 /**
  * @return array<string>
@@ -41,4 +43,12 @@ function Syntaxhighlighter_themes(): array
     }
     sort($themes);
     return $themes;
+}
+
+/**
+ * @var string $edit
+ */
+
+if (!$edit) {
+    Dic::makeInitHighlighter()();
 }

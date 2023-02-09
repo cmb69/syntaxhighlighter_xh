@@ -20,10 +20,10 @@
  */
 
 const CMSIMPLE_XH_VERSION = "CMSimple_XH 1.7.5";
+const SYNTAXHIGHLIGHTER_VERSION = "1.0";
 
 require_once "../../cmsimple/functions.php";
 
-require_once "./classes/Plugin.php";
 require_once "./classes/PluginInfo.php";
 require_once "./classes/SystemChecker.php";
 require_once "./classes/View.php";
