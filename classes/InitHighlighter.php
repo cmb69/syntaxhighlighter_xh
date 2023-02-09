@@ -21,7 +21,7 @@
 
 namespace Syntaxhighlighter;
 
-class MainController
+class InitHighlighter
 {
     /** @var string */
     private $pluginFolder;

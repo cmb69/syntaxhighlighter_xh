@@ -58,7 +58,7 @@ class Plugin
     {
         global $pth, $plugin_cf, $plugin_tx;
 
-        $controller = new MainController(
+        $controller = new InitHighlighter(
             "{$pth["folder"]["plugins"]}syntaxhighlighter/",
             $plugin_cf["syntaxhighlighter"],
             $plugin_tx["syntaxhighlighter"]
