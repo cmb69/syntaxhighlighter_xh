@@ -50,5 +50,5 @@ function Syntaxhighlighter_themes(): array
  */
 
 if (!$edit) {
-    Dic::makeInitHighlighter()();
+    Dic::makeInitHighlighter()()->trigger();
 }
