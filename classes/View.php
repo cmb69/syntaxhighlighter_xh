@@ -29,9 +29,7 @@ class View
     /** @var array<string,string> */
     private $lang;
 
-    /**
-     * @param array<string,string> $lang
-     */
+    /** @param array<string,string> $lang */
     public function __construct(string $templateFolder, array $lang)
     {
         $this->templateFolder = $templateFolder;
@@ -45,9 +43,7 @@ class View
         return $this->escape(vsprintf($this->lang[$key], $args));
     }
 
-    /**
-     * @param array<string,mixed> $_data
-     */
+    /** @param array<string,mixed> $_data */
     public function render(string $_template, array $_data): string
     {
         extract($_data);
@@ -56,9 +52,7 @@ class View
         return (string) ob_get_clean();
     }
 
-    /**
-     * @param scalar $value
-     */
+    /** @param scalar $value */
     public function escape($value): string
     {
         return XH_hsc((string) $value);

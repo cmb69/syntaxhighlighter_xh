@@ -59,10 +59,8 @@ class InitHighlighter
         return $response;
     }
 
-    /**
-     * @return mixed
-     */
-    private function getBrushes()
+    /** @return list<list<string>> */
+    private function getBrushes(): array
     {
         $dir = $this->pluginFolder . 'lib/scripts/';
         return [
@@ -95,9 +93,7 @@ class InitHighlighter
         ];
     }
 
-    /**
-     * @return array<string,scalar>
-     */
+    /** @return array<string,scalar> */
     private function getConfig(): array
     {
         $options = [
@@ -119,10 +115,8 @@ class InitHighlighter
         return $config;
     }
 
-    /**
-     * @return mixed
-     */
-    private function getStrings()
+    /** @return array<string,string> */
+    private function getStrings(): array
     {
         $strings = [];
         foreach (['expand_source', 'help', 'alert', 'no_brush', 'brush_not_html_script'] as $key) {

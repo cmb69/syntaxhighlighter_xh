@@ -52,9 +52,7 @@ class PluginInfo
         ]);
     }
 
-    /**
-     * @return list<array{state:string,label:string,stateLabel:string}>
-     */
+    /** @return list<array{state:string,label:string,stateLabel:string}> */
     private function getChecks(): array
     {
         return [
