@@ -22,7 +22,7 @@
 use Syntaxhighlighter\Dic;
 use Syntaxhighlighter\Infra\ThemeRepo;
 
-const SYNTAXHIGHLIGHTER_VERSION = "1.0";
+const SYNTAXHIGHLIGHTER_VERSION = "1.1-dev";
 
 /** @return list<string> */
 function syntaxhighlighter_themes(): array

@@ -20,7 +20,7 @@
  */
 
 const CMSIMPLE_XH_VERSION = "CMSimple_XH 1.7.5";
-const SYNTAXHIGHLIGHTER_VERSION = "1.0";
+const SYNTAXHIGHLIGHTER_VERSION = "1.1-dev";
 
 require_once "../../cmsimple/functions.php";
 
