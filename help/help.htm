@@ -36,7 +36,12 @@
 <li><a href="#download">Download</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#settings">Settings</a></li>
-<li><a href="#usage">Usage</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#tinymce4">TinyMCE4</a></li>
+<li><a href="#tinymce5">TinyMCE5</a></li>
+<li><a href="#ckeditor">CKEditor</a></li>
+</ul></li>
 <li><a href="#limitations">Limitations</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
 <li><a href="#license">License</a></li>
@@ -55,17 +60,18 @@
 <li>Set write permissions to the subdirectories <code>config/</code>, <code>css/</code> and <code>languages/</code>.</li>
 <li>Navigate to <code>Plugins</code> → <code>Syntaxhighlighter</code> in the back-end to check if all requirements are fulfilled.</li>
 </ol>
-<h3 id="for-tinymce4">For TinyMCE4</h3>
+<p>For an improved user experience in the editors, you <em>may</em> need to do some additional setup. This is not necessary for recent versions of TinyMCE4 and TinyMCE5.</p>
+<h3 id="tinymce4">TinyMCE4</h3>
 <ol type="1">
 <li>Add <code>"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js"</code> to <code>external_plugins</code>.</li>
 <li>Add the <code>syntaxhl</code> button to <code>toolbarN</code> wherever you prefer.</li>
 </ol>
-<h3 id="for-tinymce5">For TinyMCE5</h3>
+<h3 id="tinymce5">TinyMCE5</h3>
 <ol type="1">
 <li>Add <code>"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js"</code> to <code>external_plugins</code>.</li>
 <li>Add the <code>syntaxhl</code> button to <code>toolbar</code> wherever you prefer.</li>
 </ol>
-<h3 id="for-ckeditor">For CKEditor</h3>
+<h3 id="ckeditor">CKEditor</h3>
 <ol type="1">
 <li>Copy <code>plugins/syntaxhighlighter/editors/ckeditor/syntaxhighlight/</code> to <code>plugins/ckeditor/plugins_external/</code>.</li>
 </ol>

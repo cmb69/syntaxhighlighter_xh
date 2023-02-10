@@ -12,6 +12,9 @@ available, which make editing even more convenient.
 - [Installation](#installation)
 - [Settings](#settings)
 - [Usage](#usage)
+  - [TinyMCE4](#tinymce4)
+  - [TinyMCE5](#tinymce5)
+  - [CKEditor](#ckeditor)
 - [Limitations](#limitations)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -42,19 +45,23 @@ for further details.
 1.  Navigate to `Plugins` → `Syntaxhighlighter` in the back-end
     to check if all requirements are fulfilled.
 
-### For TinyMCE4
+For an improved user experience in the editors, you *may* need to do some
+additional setup. This is not necessary for recent versions of TinyMCE4
+and TinyMCE5.
+
+### TinyMCE4
 
 1. Add `"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js"`
    to `external_plugins`. 
 1. Add the `syntaxhl` button to `toolbarN` wherever you prefer.
 
-### For TinyMCE5
+### TinyMCE5
 
 1. Add `"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js"`
    to `external_plugins`. 
 1. Add the `syntaxhl` button to `toolbar` wherever you prefer.
 
-### For CKEditor
+### CKEditor
 
 1. Copy `plugins/syntaxhighlighter/editors/ckeditor/syntaxhighlight/` to
    `plugins/ckeditor/plugins_external/`.
