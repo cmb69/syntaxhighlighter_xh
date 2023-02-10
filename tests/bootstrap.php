@@ -28,4 +28,5 @@ require_once "./classes/InitHighlighter.php";
 require_once "./classes/PluginInfo.php";
 require_once "./classes/Response.php";
 require_once "./classes/SystemChecker.php";
+require_once "./classes/ThemeRepo.php";
 require_once "./classes/View.php";

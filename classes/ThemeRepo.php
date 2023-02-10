@@ -19,24 +19,33 @@
  * along with Syntaxhighlighter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Syntaxhighlighter\Dic;
-use Syntaxhighlighter\ThemeRepo;
+namespace Syntaxhighlighter;
 
-const SYNTAXHIGHLIGHTER_VERSION = "1.0";
-
-/** @return list<string> */
-function syntaxhighlighter_themes(): array
+class ThemeRepo
 {
-    global $pth;
+    /** @var string */
+    private $pluginFolder;
 
-    $repo = new ThemeRepo("{$pth['folder']['plugins']}syntaxhighlighter/");
-    return $repo->all();
-}
+    public function __construct(string $pluginFolder)
+    {
+        $this->pluginFolder = $pluginFolder;
+    }
 
-/**
- * @var string $edit
- */
-
-if (!$edit) {
-    Dic::makeInitHighlighter()()->trigger();
+    /** @return list<string> */
+    public function all(): array
+    {
+        $themeFolder = "{$this->pluginFolder}lib/styles/";
+        $themes = [];
+        $filenames = scandir($themeFolder);
+        if ($filenames === false) {
+            return $themes;
+        }
+        foreach ($filenames as $filename) {
+            if (preg_match('/shTheme(\w+)\.css/', $filename, $matches)) {
+                $themes[] = $matches[1];
+            }
+        }
+        sort($themes);
+        return $themes;
+    }
 }
