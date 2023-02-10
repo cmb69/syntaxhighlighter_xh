@@ -3,9 +3,9 @@
 Syntaxhighligher_XH facilitates improved presentation of code snippets in
 the content, for visitors having JavaScript enabled. The actual work is done by
 [Alex Gorbatchev’s Syntaxhighlighter](https://github.com/syntaxhighlighter/syntaxhighlighter);
-Syntaxhighlighter_XH merely is meant to streamline
-the integration in CMSimple_XH. For some content editors there are plugins
-available, which make editing even more convenient.
+Syntaxhighlighter_XH merely is meant to simplify
+the integration in CMSimple_XH. For some content editors, plugins are
+available which make editing even more convenient.
 
 - [Requirements](#requirements)
 - [Download](#download)

@@ -45,11 +45,11 @@
   <!-- the name of the Plugin -->
   <name type="plugin">Syntaxhighlighter_XH</name>
   <!-- Date this xml-file was updated, yyyy.mm.dd -->
-  <date_update>2021.01.23</date_update>
+  <date_update>2023.02.10</date_update>
   <!-- version of Plugin -->
-  <version>1.0beta1</version>
+  <version>1.0</version>
   <!-- date of publication, yyyy.mm.dd -->
-  <date_version>2017.08.14</date_version>
+  <date_version>2023.02.10</date_version>
   <!-- the name of the programmer -->
   <coder>Christoph M. Becker</coder>
   <!-- Categories must be written in lower case. More than one possible, separated by comma without spaces. -->
@@ -62,19 +62,19 @@
   <url>
     <!-- URL where you can download the plugin -->
     <!-- If there no Download-URL, enter this follows! - <download_url></download_url> -->
-    <download_url>https://github.com/cmb69/syntaxhighlighter_xh/releases/1.0beta1</download_url>
+    <download_url>https://github.com/cmb69/syntaxhighlighter_xh/releases/1.0</download_url>
     <!-- URL of the programmer's website -->
     <!-- If there no Website, enter this follows! - <coder_url></coder_url> -->
-    <coder_url>https://3-magi.net</coder_url>
+    <coder_url>https://3-magi.net/</coder_url>
     <!-- URL where find a demo -->
     <!-- If there no Demo-Website, enter this follows! - <demo_url></demo_url> -->
     <demo_url></demo_url>
   </url>
   <!-- compatibility with versions of XH, i.e. 1.6, 1.6.7 - 1.7.2, ≥ 1.7, ... -->
-  <compatibility>≥ 1.6.3</compatibility>
+  <compatibility>≥ 1.7.0</compatibility>
   <!-- minimum version of PHP that is required, i.e. 5.3, 5.6, 7, ≥ 5.6, ... -->
   <!-- If there no specification, e.g. for templates, enter this follows! - <php_ver></php_ver> -->
-  <php_ver>≥ 5.4.0</php_ver>
+  <php_ver>≥ 7.1.0</php_ver>
   <!-- the License for the Plugin, GPLv3, AGPL, LGPL, GPLv2 ... -->
   <license>GPLv3</license>
   <!-- Description in English is mandatory -->
@@ -82,10 +82,18 @@
     <!-- description of the plugin, ca. 200 characters, you can use <br/>, <ol></ol>, <ul></ul>, <li></li>, <b></b>, <i></i>. -->
     <description lang="en">
       Syntaxhighligher_XH facilitates improved presentation of code snippets in
-      the content for users having JavaScript enabled.
-      The actual work is done by Syntaxhighlighter from Alex Gorbatchev;
-      Syntaxhighlighter_XH merely is meant to streamline the integration in CMSimple_XH.
-      For some content editors there are plugins available, which make editing even more convenient.
+      the content, for users having JavaScript enabled.
+      The actual work is done by Alex Gorbatchev’s Syntaxhighlighter;
+      Syntaxhighlighter_XH merely is meant to simplify the integration in CMSimple_XH.
+      For some content editors, plugins are available, which make editing even more convenient.
+    </description>
+    <description lang="de">
+      Syntaxhighligher_XH ermöglicht eine verbesserte Darstellung von Codeschnipseln
+      im Inhalt, für Besucher, die JavaScript aktiviert haben.
+      Die eigentliche Arbeit wird erledigt von Syntaxhighlighter von Alex Gorbatchev;
+      Syntaxhighlighter_XH dient lediglich der vereinfachten Integration in CMSimple_XH.
+      Für einige Inhaltseditoren stehen Plugins zur Verfügung,
+      die das Editieren noch komfortabler machen.
     </description>
     <!-- additional languages are possible, i.e. da, fr, pl, ... -->
     <!-- The use of this language is limited by the website where the repository is hosted. -->
