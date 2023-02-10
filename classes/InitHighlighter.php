@@ -96,7 +96,7 @@ class InitHighlighter
     }
 
     /**
-     * @return array<string,string>
+     * @return array<string,scalar>
      */
     private function getConfig(): array
     {
