@@ -26,7 +26,7 @@ use ApprovalTests\Approvals;
 
 class InitHighlighterTest extends TestCase
 {
-    public function testIt(): void
+    public function testIncludesScriptsAndCss(): void
     {
         $plugin_cf = XH_includeVar("./config/config.php", 'plugin_cf');
         $conf = $plugin_cf['syntaxhighlighter'];
