@@ -33,7 +33,7 @@ class Response
     public function addMetaJson(string $name, $value)
     {
         $content = (string) json_encode($value, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-        $$this->hjs .= "<meta name=\"{$name}\" content='{$content}'>\n";
+        $this->hjs .= "<meta name=\"{$name}\" content='{$content}'>\n";
     }
 
     /** @return void */

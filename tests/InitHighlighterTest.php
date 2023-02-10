@@ -19,13 +19,21 @@
  * along with Syntaxhighlighter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-const CMSIMPLE_XH_VERSION = "CMSimple_XH 1.7.5";
-const SYNTAXHIGHLIGHTER_VERSION = "1.0";
+namespace Syntaxhighlighter;
 
-require_once "../../cmsimple/functions.php";
+use PHPUnit\Framework\TestCase;
+use ApprovalTests\Approvals;
 
-require_once "./classes/InitHighlighter.php";
-require_once "./classes/PluginInfo.php";
-require_once "./classes/Response.php";
-require_once "./classes/SystemChecker.php";
-require_once "./classes/View.php";
+class InitHighlighterTest extends TestCase
+{
+    public function testIt(): void
+    {
+        $plugin_cf = XH_includeVar("./config/config.php", 'plugin_cf');
+        $conf = $plugin_cf['syntaxhighlighter'];
+        $plugin_tx = XH_includeVar("./languages/en.php", 'plugin_tx');
+        $lang = $plugin_tx['syntaxhighlighter'];
+        $sut = new InitHighlighter("./", $conf, $lang);
+        $response = $sut();
+        Approvals::verifyHtml($response->hjs());
+    }
+}
