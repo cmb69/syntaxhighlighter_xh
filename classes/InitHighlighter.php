@@ -21,6 +21,8 @@
 
 namespace Syntaxhighlighter;
 
+use Syntaxhighlighter\Infra\Response;
+
 class InitHighlighter
 {
     /** @var string */

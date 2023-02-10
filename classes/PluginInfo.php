@@ -21,6 +21,9 @@
 
 namespace Syntaxhighlighter;
 
+use Syntaxhighlighter\Infra\SystemChecker;
+use Syntaxhighlighter\Infra\View;
+
 class PluginInfo
 {
     /** @var string */

@@ -20,7 +20,7 @@
  */
 
 use Syntaxhighlighter\Dic;
-use Syntaxhighlighter\ThemeRepo;
+use Syntaxhighlighter\Infra\ThemeRepo;
 
 const SYNTAXHIGHLIGHTER_VERSION = "1.0";
 

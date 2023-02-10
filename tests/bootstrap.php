@@ -24,9 +24,10 @@ const SYNTAXHIGHLIGHTER_VERSION = "1.0";
 
 require_once "../../cmsimple/functions.php";
 
+require_once "./classes/infra/Response.php";
+require_once "./classes/infra/SystemChecker.php";
+require_once "./classes/infra/ThemeRepo.php";
+require_once "./classes/infra/View.php";
+
 require_once "./classes/InitHighlighter.php";
 require_once "./classes/PluginInfo.php";
-require_once "./classes/Response.php";
-require_once "./classes/SystemChecker.php";
-require_once "./classes/ThemeRepo.php";
-require_once "./classes/View.php";

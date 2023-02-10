@@ -19,7 +19,7 @@
  * along with Syntaxhighlighter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Syntaxhighlighter;
+namespace Syntaxhighlighter\Infra;
 
 class View
 {

@@ -24,6 +24,9 @@ namespace Syntaxhighlighter;
 use PHPUnit\Framework\TestCase;
 use ApprovalTests\Approvals;
 
+use Syntaxhighlighter\Infra\SystemChecker;
+use Syntaxhighlighter\Infra\View;
+
 class PluginInfoTest extends TestCase
 {
     public function testRendersPluginInfo(): void

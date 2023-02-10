@@ -21,6 +21,9 @@
 
 namespace Syntaxhighlighter;
 
+use Syntaxhighlighter\Infra\SystemChecker;
+use Syntaxhighlighter\Infra\View;
+
 class Dic
 {
     public static function makeInitHighlighter(): InitHighlighter
