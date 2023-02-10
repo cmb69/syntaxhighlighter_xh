@@ -43,42 +43,19 @@ class InitHighlighter
         $this->lang = $lang;
     }
 
-    public function __invoke(): void
+    public function __invoke(): Response
     {
-        $this->addMetaJson("syntaxhighlighter.brushes", $this->getBrushes());
+        $response = new Response();
+        $response->addMetaJson("syntaxhighlighter.brushes", $this->getBrushes());
         foreach (['shCore', 'shAutoloader'] as $f) {
-            $this->addScript("{$this->pluginFolder}lib/scripts/{$f}.js");
+            $response->addScript("{$this->pluginFolder}lib/scripts/{$f}.js");
         }
         foreach (['shCore', 'shTheme'] as $f) {
-            $this->addStylesheet("{$this->pluginFolder}lib/styles/{$f}{$this->conf['theme']}.css");
+            $response->addStylesheet("{$this->pluginFolder}lib/styles/{$f}{$this->conf['theme']}.css");
         }
-        $this->addMetaJson("syntaxhighlighter.strings", $this->getStrings());
-        $this->addScript("{$this->pluginFolder}syntaxhighlighter.min.js");
-    }
-
-    /**
-     * @param mixed $value
-     */
-    private function addMetaJson(string $name, $value): void
-    {
-        global $hjs;
-
-        $content = (string) json_encode($value, JSON_HEX_APOS | JSON_UNESCAPED_SLASHES);
-        $hjs .= "<meta name=\"{$name}\" content='{$content}'>\n";
-    }
-
-    private function addStylesheet(string $filename): void
-    {
-        global $hjs;
-
-        $hjs .= "<link rel=\"stylesheet\" href=\"{$filename}\" type=\"text/css\">\n";
-    }
-
-    private function addScript(string $filename): void
-    {
-        global $hjs;
-
-        $hjs .= "<script type=\"text/javascript\" src=\"{$filename}\"></script>\n";
+        $response->addMetaJson("syntaxhighlighter.strings", $this->getStrings());
+        $response->addScript("{$this->pluginFolder}syntaxhighlighter.min.js");
+        return $response;
     }
 
     /**
