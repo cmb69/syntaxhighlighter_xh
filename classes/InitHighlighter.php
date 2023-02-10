@@ -47,7 +47,8 @@ class InitHighlighter
     {
         $response = new Response();
         $response->addMetaJson("syntaxhighlighter.brushes", $this->getBrushes());
-        foreach (['shCore', 'shAutoloader'] as $f) {
+        $response->addMetaJson("syntaxhighlighter.config", $this->getConfig());
+        foreach (['shCore', 'shAutoloader', 'shBrushXml'] as $f) {
             $response->addScript("{$this->pluginFolder}lib/scripts/{$f}.js");
         }
         foreach (['shCore', 'shTheme'] as $f) {
@@ -92,6 +93,30 @@ class InitHighlighter
             ['vb', 'vbnet', $dir . 'shBrushVb.js'],
             ['xml', 'xhtml', 'xslt', 'html', $dir . 'shBrushXml.js'],
         ];
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    private function getConfig(): array
+    {
+        $options = [
+            "auto_links" => "boolval",
+            "class_name" => "strval",
+            "collapse" => "boolval",
+            "first_line" => "intval",
+            "gutter" => "boolval",
+            "highlight" => "json_decode",
+            "html_script" => "boolval",
+            "smart_tabs" => "boolval",
+            "tab_size" => "intval",
+            "toolbar" => "boolval",
+        ];
+        $config = [];
+        foreach ($options as $option => $func) {
+            $config[str_replace("_", "-", $option)] = $func($this->conf["default_$option"]);
+        }
+        return $config;
     }
 
     /**
