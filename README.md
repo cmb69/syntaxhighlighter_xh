@@ -51,14 +51,18 @@ and TinyMCE5.
 
 ### TinyMCE4
 
-1. Add `"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js"`
-   to `external_plugins`. 
+1. Add the following line to `external_plugins`:
+
+        "syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js"
+
 1. Add the `syntaxhl` button to `toolbarN` wherever you prefer.
 
 ### TinyMCE5
 
-1. Add `"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js"`
-   to `external_plugins`. 
+1. Add the following line to `external_plugins`:
+
+        "syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js"
+
 1. Add the `syntaxhl` button to `toolbar` wherever you prefer.
 
 ### CKEditor

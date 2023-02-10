@@ -14,7 +14,7 @@
         padding-left: 0.5em;
         padding-right: 0.5em;
         background: #ffffe1;
-        max-width: 40em;
+        max-width: 32em;
     }
     p {
         text-align: justify;
@@ -63,13 +63,15 @@
 <p>For an improved user experience in the editors, you <em>may</em> need to do some additional setup. This is not necessary for recent versions of TinyMCE4 and TinyMCE5.</p>
 <h3 id="tinymce4">TinyMCE4</h3>
 <ol type="1">
-<li>Add <code>"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js"</code> to <code>external_plugins</code>.</li>
-<li>Add the <code>syntaxhl</code> button to <code>toolbarN</code> wherever you prefer.</li>
+<li><p>Add the following line to <code>external_plugins</code>:</p>
+<pre><code> &quot;syntaxhl&quot;: &quot;%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce4/syntaxhl/plugin.min.js&quot;</code></pre></li>
+<li><p>Add the <code>syntaxhl</code> button to <code>toolbarN</code> wherever you prefer.</p></li>
 </ol>
 <h3 id="tinymce5">TinyMCE5</h3>
 <ol type="1">
-<li>Add <code>"syntaxhl": "%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js"</code> to <code>external_plugins</code>.</li>
-<li>Add the <code>syntaxhl</code> button to <code>toolbar</code> wherever you prefer.</li>
+<li><p>Add the following line to <code>external_plugins</code>:</p>
+<pre><code> &quot;syntaxhl&quot;: &quot;%CMSIMPLE_ROOT%plugins/syntaxhighlighter/editors/tinymce5/syntaxhl/plugin.min.js&quot;</code></pre></li>
+<li><p>Add the <code>syntaxhl</code> button to <code>toolbar</code> wherever you prefer.</p></li>
 </ol>
 <h3 id="ckeditor">CKEditor</h3>
 <ol type="1">
