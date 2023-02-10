@@ -1,7 +1,7 @@
 # Syntaxhighlighter_XH
 
 Syntaxhighligher_XH facilitates improved presentation of code snippets in
-the content for users having JavaScript enabled. The actual work is done by
+the content, for visitors having JavaScript enabled. The actual work is done by
 [Alex Gorbatchev’s Syntaxhighlighter](https://github.com/syntaxhighlighter/syntaxhighlighter);
 Syntaxhighlighter_XH merely is meant to streamline
 the integration in CMSimple_XH. For some content editors there are plugins
@@ -10,11 +10,11 @@ available, which make editing even more convenient.
 - [Requirements](#requirements)
 - [Download](#download)
 - [Installation](#installation)
-- [Settings](#settings)
-- [Usage](#usage)
   - [TinyMCE4](#tinymce4)
   - [TinyMCE5](#tinymce5)
   - [CKEditor](#ckeditor)
+- [Settings](#settings)
+- [Usage](#usage)
 - [Limitations](#limitations)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -22,8 +22,8 @@ available, which make editing even more convenient.
 
 ## Requirements
 
-Syntaxhighligher_XH is a plugin for CMSimple_XH ≥ 1.7.0.
-It requires PHP ≥ 7.1.0 with the JSON extension.
+Syntaxhighligher_XH is a plugin for CMSimple_XH.
+It requires CMSimple_XH ≥ 1.7.0, and PHP ≥ 7.1.0 with the *json* extension.
 
 ## Download
 
@@ -33,7 +33,7 @@ is available for download on Github.
 ## Installation
 
 The installation is done as with many other CMSimple_XH plugins. See the
-[CMSimple\_XH wiki](https://wiki.cmsimple-xh.org/doku.php/installation#plugins)
+[CMSimple_XH Wiki](https://wiki.cmsimple-xh.org/?for-users/working-with-the-cms/plugins)
 for further details.
 
 1.  **Backup the data on your server.**
@@ -87,17 +87,17 @@ The look of Syntaxhighlighter_XH can be customized under `Stylesheet`.
 
 ## Usage
 
-Add code you like to be presented with syntax highlighting to your pages by
+Add code snippets you like to be presented with syntax highlighting to your pages by
 enclosing it in a `<pre>` element with a class as described in
-[the manual of Syntaxhighlighter](http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/#parameters)
+[the manual of Syntaxhighlighter](https://github.com/syntaxhighlighter/syntaxhighlighter/wiki/Configuration)
 
-For TinyMCE 4 and 5 inserting and editing the code can be done by pressing the
-`Insert/Edit code sample` button, where you can edit the code and
+For TinyMCE 4 and 5 inserting and editing the code snippets can be done by pressing the
+`Insert/Edit code sample` button, where you can edit the code snippets and
 choose the desired language. Other settings have to be done manually in the
 HTML source code view.
 
-For CKEditor inserting and editing the code can be done by pressing the
-`Add or update a code snippet` button, where you can edit the code and
+For CKEditor inserting and editing the code snippets can be done by pressing the
+`Add or update a code snippet` button, where you can edit the code snippets and
 the settings.
 
 ## Limitations
@@ -131,7 +131,7 @@ Copyright 2012-2023 Christoph M. Becker
 
 ## Credits
 
-This plugin was inspired by `pmolik`.
+This plugin was inspired by *pmolik*.
 
 Syntaxhighlighter_XH is powered by
 [Alex Gorbatchev’s Syntaxhighlighter](https://github.com/syntaxhighlighter/syntaxhighlighter);

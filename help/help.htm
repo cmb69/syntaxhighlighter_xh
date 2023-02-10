@@ -30,29 +30,29 @@
 </head>
 <body>
 <h1 id="syntaxhighlighter_xh">Syntaxhighlighter_XH</h1>
-<p>Syntaxhighligher_XH facilitates improved presentation of code snippets in the content for users having JavaScript enabled. The actual work is done by <a href="https://github.com/syntaxhighlighter/syntaxhighlighter">Alex Gorbatchev’s Syntaxhighlighter</a>; Syntaxhighlighter_XH merely is meant to streamline the integration in CMSimple_XH. For some content editors there are plugins available, which make editing even more convenient.</p>
+<p>Syntaxhighligher_XH facilitates improved presentation of code snippets in the content, for visitors having JavaScript enabled. The actual work is done by <a href="https://github.com/syntaxhighlighter/syntaxhighlighter">Alex Gorbatchev’s Syntaxhighlighter</a>; Syntaxhighlighter_XH merely is meant to streamline the integration in CMSimple_XH. For some content editors there are plugins available, which make editing even more convenient.</p>
 <ul>
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#download">Download</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#settings">Settings</a></li>
-<li><a href="#usage">Usage</a>
+<li><a href="#installation">Installation</a>
 <ul>
 <li><a href="#tinymce4">TinyMCE4</a></li>
 <li><a href="#tinymce5">TinyMCE5</a></li>
 <li><a href="#ckeditor">CKEditor</a></li>
 </ul></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#usage">Usage</a></li>
 <li><a href="#limitations">Limitations</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
 <li><a href="#license">License</a></li>
 <li><a href="#credits">Credits</a></li>
 </ul>
 <h2 id="requirements">Requirements</h2>
-<p>Syntaxhighligher_XH is a plugin for CMSimple_XH ≥ 1.7.0. It requires PHP ≥ 7.1.0 with the JSON extension.</p>
+<p>Syntaxhighligher_XH is a plugin for CMSimple_XH. It requires CMSimple_XH ≥ 1.7.0, and PHP ≥ 7.1.0 with the <em>json</em> extension.</p>
 <h2 id="download">Download</h2>
 <p>The <a href="https://github.com/cmb69/syntaxhighlighter_xh/releases/latest">lastest release</a> is available for download on Github.</p>
 <h2 id="installation">Installation</h2>
-<p>The installation is done as with many other CMSimple_XH plugins. See the <a href="https://wiki.cmsimple-xh.org/doku.php/installation#plugins">CMSimple_XH wiki</a> for further details.</p>
+<p>The installation is done as with many other CMSimple_XH plugins. See the <a href="https://wiki.cmsimple-xh.org/?for-users/working-with-the-cms/plugins">CMSimple_XH Wiki</a> for further details.</p>
 <ol type="1">
 <li><strong>Backup the data on your server.</strong></li>
 <li>Unzip the distribution on your computer.</li>
@@ -83,9 +83,9 @@
 <p>Localization is done under <code>Language</code>. You can translate the character strings to your own language if there is no appropriate language file available, or customize them according to your needs.</p>
 <p>The look of Syntaxhighlighter_XH can be customized under <code>Stylesheet</code>.</p>
 <h2 id="usage">Usage</h2>
-<p>Add code you like to be presented with syntax highlighting to your pages by enclosing it in a <code>&lt;pre&gt;</code> element with a class as described in <a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/#parameters">the manual of Syntaxhighlighter</a></p>
-<p>For TinyMCE 4 and 5 inserting and editing the code can be done by pressing the <code>Insert/Edit code sample</code> button, where you can edit the code and choose the desired language. Other settings have to be done manually in the HTML source code view.</p>
-<p>For CKEditor inserting and editing the code can be done by pressing the <code>Add or update a code snippet</code> button, where you can edit the code and the settings.</p>
+<p>Add code snippets you like to be presented with syntax highlighting to your pages by enclosing it in a <code>&lt;pre&gt;</code> element with a class as described in <a href="https://github.com/syntaxhighlighter/syntaxhighlighter/wiki/Configuration">the manual of Syntaxhighlighter</a></p>
+<p>For TinyMCE 4 and 5 inserting and editing the code snippets can be done by pressing the <code>Insert/Edit code sample</code> button, where you can edit the code snippets and choose the desired language. Other settings have to be done manually in the HTML source code view.</p>
+<p>For CKEditor inserting and editing the code snippets can be done by pressing the <code>Add or update a code snippet</code> button, where you can edit the code snippets and the settings.</p>
 <h2 id="limitations">Limitations</h2>
 <p>The syntax highlighting, line numbering etc. requires a contemporary browser (e.g. IE is not supported) with JavaScript enabled. In other environments the code snippets are presented unenhanced.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -96,7 +96,7 @@
 <p>You should have received a copy of the GNU General Public License along with Syntaxhighlighter_XH. If not, see <a href="https://www.gnu.org/licenses/" class="uri">https://www.gnu.org/licenses/</a>.</p>
 <p>Copyright 2012-2023 Christoph M. Becker</p>
 <h2 id="credits">Credits</h2>
-<p>This plugin was inspired by <code>pmolik</code>.</p>
+<p>This plugin was inspired by <em>pmolik</em>.</p>
 <p>Syntaxhighlighter_XH is powered by <a href="https://github.com/syntaxhighlighter/syntaxhighlighter">Alex Gorbatchev’s Syntaxhighlighter</a>; many thanks for releasing this great tool under LGPL.</p>
 <p>The TinyMCE 4 and 5 plugins are based on the <a href="https://www.tinymce.com/docs/plugins/codesample/">codesample plugin</a> by Ephox Corp. The <a href="https://github.com/dbrain/ckeditor-syntaxhighlight">CKEditor plugin</a> is written by Daniel Brain. Many thanks for releasing these plugins under LGPL.</p>
 <p>The plugin logo has been designed by <a href="https://www.everaldo.com/about">YellowIcon</a>. Many thanks for publishing this icon under GPL.</p>
